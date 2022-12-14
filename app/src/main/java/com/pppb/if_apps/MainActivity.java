@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected fragment_frs fragmentFrs;
     protected fragment_pertemuan fragmentPertemuan;
     protected fragment_pengumuman fragmentPengumuman;
+    protected fragment_tambahpengumuman fragmentTambahpengumuman;
+    protected fragment_pengumumandosen fragmentPengumumandosen;
 
     DrawerLayout drawer;
 
@@ -34,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
         this.fragmentFrs = fragment_frs.newInstance();
         this.fragmentPertemuan = fragment_pertemuan.newInstance();
         this.fragmentPengumuman = fragment_pengumuman.newInstance();
+        this.fragmentTambahpengumuman = fragment_tambahpengumuman.newInstance();
+        this.fragmentPengumumandosen = fragment_pengumumandosen.newInstance();
         drawer = binding.drawerLayout;
 
         fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.add(binding.fragmentContainer.getId(), fragmentHome, "main").setReorderingAllowed(true).commit();
-        ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar, R.string.open, R.string.close);
+        ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(abdt);
         abdt.syncState();
 
@@ -65,14 +69,24 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(binding.fragmentContainer.getId(),this.fragmentFrs).addToBackStack(null).setReorderingAllowed(true);
         }
         else if (page==3){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentPengumuman).addToBackStack(null).setReorderingAllowed(true);
+            ft.replace(binding.fragmentContainer.getId(),this.fragmentPengumumandosen).addToBackStack(null).setReorderingAllowed(true);
         }
         else if (page==4){
             ft.replace(binding.fragmentContainer.getId(),this.fragmentPertemuan).addToBackStack(null).setReorderingAllowed(true);
         }
+        else if (page==5){
+            ft.replace(binding.fragmentContainer.getId(),this.fragmentTambahpengumuman).addToBackStack(null).setReorderingAllowed(true);
+        }
+        else if (page==6){
+            ft.replace(binding.fragmentContainer.getId(),this.fragmentTambahpengumuman).addToBackStack(null).setReorderingAllowed(true);
+        }
+        else if(page==0){
+            this.moveTaskToBack(true);
+            this.finish();
+        }
         ft.commit();
         drawer.closeDrawers();
     }
-
-
 }
+
+

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import com.pppb.if_apps.databinding.FragmentPertemuanBinding;
 
 public class fragment_pertemuan extends Fragment {
-
     FragmentPertemuanBinding binding;
 
     public fragment_pertemuan(){

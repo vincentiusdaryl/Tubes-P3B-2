@@ -14,10 +14,11 @@ import com.pppb.if_apps.databinding.FragmentLeftBinding;
 public class fragment_left extends Fragment {
     FragmentLeftBinding binding;
 
-    public fragment_left(){
+    public fragment_left() {
 
     }
-    public static fragment_left newInstance(){
+
+    public static fragment_left newInstance() {
         fragment_left fragment = new fragment_left();
         return fragment;
     }
@@ -34,7 +35,7 @@ public class fragment_left extends Fragment {
         return binding.getRoot();
     }
 
-    private void onClick(View view){
+    private void onClick(View view) {
         if(view == binding.buttonHome){
             Bundle result = new Bundle();
             result.putInt("page",1);
@@ -45,12 +46,12 @@ public class fragment_left extends Fragment {
             result.putInt("page",2);
             getParentFragmentManager().setFragmentResult("changePage", result);
         }
-        else if(view == binding.buttonPertemuan){
+        else if(view == binding.buttonPengumuman){
             Bundle result = new Bundle();
             result.putInt("page",3);
             getParentFragmentManager().setFragmentResult("changePage",result);
         }
-        else if(view == binding.buttonPengumuman){
+        else if(view == binding.buttonPertemuan){
             Bundle result = new Bundle();
             result.putInt("page",4);
             getParentFragmentManager().setFragmentResult("changePage",result);
@@ -60,9 +61,5 @@ public class fragment_left extends Fragment {
             result.putInt("page",0);
             getParentFragmentManager().setFragmentResult("changePage",result);
         }
-
     }
-
-
-
 }
