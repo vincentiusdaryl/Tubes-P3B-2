@@ -46,7 +46,8 @@
             <EditText
                 android:id="@+id/et_pwd"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"></EditText>
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"></EditText>
         </LinearLayout>
 
         <LinearLayout
