@@ -18,9 +18,9 @@ public class listPengumumanAdapter extends BaseAdapter {
     FragmentListpengumumanBinding binding;
     private ArrayList<listPengumumanAdapter> listPengumuman;
 
-    public listPengumumanAdapter(Context context, ArrayList<listPengumumanAdapter> listDokter){
+    public listPengumumanAdapter(Context context, ArrayList<listPengumumanAdapter> listPengumuman){
         this.context = context;
-        this.listPengumuman = listDokter;
+        this.listPengumuman = listPengumuman;
     }
 
     @Override

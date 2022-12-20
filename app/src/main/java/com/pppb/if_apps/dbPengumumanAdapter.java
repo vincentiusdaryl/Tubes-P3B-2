@@ -88,7 +88,7 @@ public class dbPengumumanAdapter extends SQLiteOpenHelper {
         return c;
     }
 
-    public ArrayList<pengumuman> getDokterData()
+    public ArrayList<pengumuman> getpengumuman()
     {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<pengumuman> arrayList = new ArrayList<>();
