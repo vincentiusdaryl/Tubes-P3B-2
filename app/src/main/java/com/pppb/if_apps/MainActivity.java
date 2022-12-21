@@ -1,91 +1,94 @@
 package com.pppb.if_apps;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-
+import com.pppb.if_apps.Model.Key;
+import com.pppb.if_apps.R;
+import com.pppb.if_apps.View.FragmentHome;
+import com.pppb.if_apps.View.FragmentLogin;
 import com.pppb.if_apps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     private ActivityMainBinding binding;
-    protected FragmentManager fragmentManager;
-    protected fragment_left fragmentLeft;
-    protected fragment_home fragmentHome;
-    protected fragment_frs fragmentFrs;
-    protected fragment_pertemuan fragmentPertemuan;
-    protected fragment_pengumuman fragmentPengumuman;
-    protected fragment_tambahpengumuman fragmentTambahpengumuman;
-    protected fragment_pengumumandosen fragmentPengumumandosen;
-
-    DrawerLayout drawer;
+    private FragmentManager fragmentManager;
+    private FragmentLogin fragmentLogin;
+    private FragmentHome fragmentHome;
+    private FragmentTransaction fragmentTransaction;
+    private Fragment[] fragments;
+    private int currentFragment;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        this.fragmentLeft = fragment_left.newInstance();
-        this.fragmentHome = fragment_home.newInstance();
-        this.fragmentFrs = fragment_frs.newInstance();
-        this.fragmentPertemuan = fragment_pertemuan.newInstance();
-        this.fragmentPengumuman = fragment_pengumuman.newInstance();
-        this.fragmentTambahpengumuman = fragment_tambahpengumuman.newInstance();
-        this.fragmentPengumumandosen = fragment_pengumumandosen.newInstance();
-        drawer = binding.drawerLayout;
+        this.binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(this.binding.getRoot());
 
-        fragmentManager = getSupportFragmentManager();
+        // Fragment Initiation
+        this.fragmentHome = FragmentHome.newInstance();
+        this.fragmentLogin = FragmentLogin.newInstance();
 
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.add(binding.fragmentContainer.getId(), fragmentHome, "main").setReorderingAllowed(true).commit();
-        ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.open, R.string.close);
-        drawer.addDrawerListener(abdt);
-        abdt.syncState();
+        // Gathering all fragments in one array
+        this.fragments = new Fragment[]{
+                this.fragmentLogin,
+                this.fragmentHome
+        };
 
+        // Fragment Mover
+        this.fragmentManager = getSupportFragmentManager();
+        this.fragmentTransaction = this.fragmentManager.beginTransaction();
 
+        // Add FragmentHome as the first fragment to show
+        this.fragmentTransaction.add(R.id.fragmentContainer, this.fragmentLogin).addToBackStack(null).commit();
+        this.currentFragment = Key.FRAGMENT_LOGIN;
+
+        // Add drawer layout
+//        ActionBarDrawerToggle abdt = new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar, R.string.open, R.string.close);
+//        this.drawer.addDrawerListener(abdt);
+//        abdt.syncState();
+
+        // Change page listener
         this.getSupportFragmentManager().setFragmentResultListener(
-                "changePage", this, new FragmentResultListener() {
+                Key.CHANGE_PAGE, this, new FragmentResultListener() {
                     @Override
                     public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                        int page = result.getInt("page");
+                        int page = result.getInt(Key.CHANGE_PAGE_NUMBER);
                         changePage(page);
                     }
                 }
         );
     }
 
-    public void changePage(int page) {
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        if(page==1){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentHome).addToBackStack(null).setReorderingAllowed(true);
+    private void changePage (int page) {
+        if (page == Key.PAGE_EXIT){
+            this.exitApplication();
         }
-        else if(page==2){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentFrs).addToBackStack(null).setReorderingAllowed(true);
+        else {
+            this.fragmentTransaction = this.fragmentManager.beginTransaction();
+            this.fragmentTransaction.hide(this.fragments[this.currentFragment]);
+            if (this.fragments[page].isAdded()){
+                this.fragmentTransaction.show(this.fragments[page]);
+            }
+            else {
+                this.fragmentTransaction.add(this.binding.fragmentContainer.getId(), this.fragments[page]).addToBackStack(null);
+            }
+            this.fragmentTransaction.commit();
+            this.currentFragment = page;
         }
-        else if (page==3){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentPengumumandosen).addToBackStack(null).setReorderingAllowed(true);
-        }
-        else if (page==4){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentPertemuan).addToBackStack(null).setReorderingAllowed(true);
-        }
-        else if (page==5){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentTambahpengumuman).addToBackStack(null).setReorderingAllowed(true);
-        }
-        else if (page==6){
-            ft.replace(binding.fragmentContainer.getId(),this.fragmentTambahpengumuman).addToBackStack(null).setReorderingAllowed(true);
-        }
-        else if(page==0){
-            this.moveTaskToBack(true);
-            this.finish();
-        }
-        ft.commit();
-        drawer.closeDrawers();
+    }
+
+    private void exitApplication () {
+        this.moveTaskToBack(true);
+        this.finish();
     }
 }
 
