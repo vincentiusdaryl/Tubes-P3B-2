@@ -61,9 +61,9 @@ public class dbPengumumanAdapter extends SQLiteOpenHelper {
         return db.delete(DB_TABLE,where,null)!=0;
     }
 
-    public boolean deleteBarisNama(String namaDokter){
+    public boolean deleteBarisNama(String string){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(DB_TABLE, KEY_JUDUL + "=?", new String[]{String.valueOf(namaDokter)})>0;
+        return db.delete(DB_TABLE, KEY_JUDUL + "=?", new String[]{String.valueOf(string)})>0;
     }
 
     public void deleteAll(){
