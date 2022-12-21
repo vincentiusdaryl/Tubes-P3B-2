@@ -28,7 +28,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentLoginBinding.inflate(inflater, container, false);
 
-        this.presenter = new LoginPresenter(this, getActivity());
+        this.presenter = new LoginPresenter(this, getActivity(), binding);
         this.binding.btnAdmin.setOnClickListener(this::onClick);
         this.binding.btnMhs.setOnClickListener(this::onClick);
         this.binding.btnDosen.setOnClickListener(this::onClick);

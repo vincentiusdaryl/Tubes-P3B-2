@@ -14,6 +14,7 @@ import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Model.Login;
 import com.pppb.if_apps.Model.ResLogin;
 import com.pppb.if_apps.View.ILogin;
+import com.pppb.if_apps.databinding.FragmentLoginBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,10 +23,12 @@ public class LoginPresenter {
     private ILogin ui;
     private Context context;
     private Gson gson;
+    private FragmentLoginBinding binding;
 
-    public LoginPresenter(ILogin ui, Context context){
+    public LoginPresenter(ILogin ui, Context context, FragmentLoginBinding binding){
         this.ui = (ILogin) ui;
         this.context = context;
+        this.binding = binding;
         this.gson = new Gson();
     }
 
@@ -47,14 +50,30 @@ public class LoginPresenter {
                     @Override
                     public void onResponse(JSONObject response) {
                         processResult(response.toString());
+                        Log.d("response", response.toString());
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO: Handle error
-                        Log.e("ERROR", error.toString());
-                        ui.showLoginStatus(error.toString());
+                        String body;
+                        String errRes;
+                        if(error.networkResponse.data!=null) {
+                            try {
+                                body = new String(error.networkResponse.data);
+                                JSONObject json = new JSONObject(body);
+                                errRes = json.getString("errcode");
+                                Log.d("error", errRes);
+                                if(errRes.equals("E_AUTH_FAILED")){
+                                    ui.showLoginStatus("Email atau Password Salah!");
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if(binding.etEmail.getText().toString().equals("") && binding.etPwd.getText().toString().equals("")){
+                            ui.showLoginStatus("Email atau Password harus diisi!");
+                        }
                     }
                 });
         queue.add(jsonObjectRequest);
@@ -65,9 +84,9 @@ public class LoginPresenter {
 
         if(res.getToken()!=null){
             Key.TOKEN = res.getToken();
+            this.ui.showLoginStatus("Login Berhasil");
         }
 
-        this.ui.showLoginStatus(Key.TOKEN);
         Log.d("token", Key.TOKEN);
     }
 }
