@@ -5,6 +5,9 @@ public class Key {
     // Key for fragment number on fragments array
     public final static int FRAGMENT_LOGIN = 0;
     public final static int FRAGMENT_HOME = 1;
+    public final static int FRAGMENT_PENGUMUMAN = 2;
+    public final static int FRAGMENT_PERTEMUAN = 3;
+    public final static int FRAGMENT_FRS = 4;
     public final static int PAGE_EXIT = -999;
 
     // Key for fragment listener

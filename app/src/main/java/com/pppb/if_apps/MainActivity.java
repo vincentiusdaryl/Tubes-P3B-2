@@ -15,6 +15,7 @@ import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.R;
 import com.pppb.if_apps.View.FragmentHome;
 import com.pppb.if_apps.View.FragmentLogin;
+import com.pppb.if_apps.View.FragmentPengumuman;
 import com.pppb.if_apps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private FragmentLogin fragmentLogin;
     private FragmentHome fragmentHome;
+    private FragmentPengumuman fragmentPengumuman;
     private FragmentTransaction fragmentTransaction;
     private Fragment[] fragments;
     private int currentFragment;
@@ -36,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
         // Fragment Initiation
         this.fragmentHome = FragmentHome.newInstance();
         this.fragmentLogin = FragmentLogin.newInstance();
+        this.fragmentPengumuman = FragmentPengumuman.newInstance();
 
         // Gathering all fragments in one array
         this.fragments = new Fragment[]{
                 this.fragmentLogin,
-                this.fragmentHome
+                this.fragmentHome,
+                this.fragmentPengumuman
         };
 
         // Fragment Mover

@@ -1,20 +1,25 @@
 package com.pppb.if_apps.View;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Presenter.LoginPresenter;
+import com.pppb.if_apps.R;
 import com.pppb.if_apps.databinding.FragmentLoginBinding;
 
 public class FragmentLogin extends Fragment implements View.OnClickListener, ILogin {
     private FragmentLoginBinding binding;
     private LoginPresenter presenter;
+    private FragmentManager fragmentManager;
 
     public FragmentLogin() {
 
@@ -26,6 +31,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.fragmentManager = getParentFragmentManager();
         this.binding = FragmentLoginBinding.inflate(inflater, container, false);
 
         this.presenter = new LoginPresenter(this, getActivity(), binding);
@@ -50,6 +56,11 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
         }
     }
 
+    private void closeSoftKeyboard () {
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+    }
+
     private void reqLogin(String roles){
         String email = this.binding.etEmail.getText().toString();
         String password = this.binding.etPwd.getText().toString();
@@ -57,7 +68,23 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
         this.presenter.reqLogin(email, password, roles);
     }
 
-    public void showLoginStatus(String loginStatus){
-        this.binding.tvStatusLogin.setText(loginStatus);
+    public void changePage(int page){
+        Bundle result = new Bundle();
+        result.putInt(Key.CHANGE_PAGE_NUMBER, page);
+        this.fragmentManager.setFragmentResult(Key.CHANGE_PAGE, result);
+    }
+
+
+
+    public void showLoginStatus(String loginStatus, boolean statusLogin){
+        if(statusLogin){
+            this.closeSoftKeyboard();
+            this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.green));
+            this.changePage(1);
+        }
+        else{
+            this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.red));
+            this.binding.tvStatusLogin.setText(loginStatus);
+        }
     }
 }

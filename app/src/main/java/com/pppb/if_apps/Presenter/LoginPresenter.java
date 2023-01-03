@@ -65,14 +65,14 @@ public class LoginPresenter {
                                 errRes = json.getString("errcode");
                                 Log.d("error", errRes);
                                 if(errRes.equals("E_AUTH_FAILED")){
-                                    ui.showLoginStatus("Email atau Password Salah!");
+                                    ui.showLoginStatus("Email atau Password Salah!", false);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                         if(binding.etEmail.getText().toString().equals("") && binding.etPwd.getText().toString().equals("")){
-                            ui.showLoginStatus("Email atau Password harus diisi!");
+                            ui.showLoginStatus("Email atau Password harus diisi!", false);
                         }
                     }
                 });
@@ -81,12 +81,14 @@ public class LoginPresenter {
 
     private void processResult(String jsonObject) {
         ResLogin res = gson.fromJson(jsonObject, ResLogin.class);
-
+        String token = "";
         if(res.getToken()!=null){
             Key.TOKEN = res.getToken();
-            this.ui.showLoginStatus("Login Berhasil");
+            token = res.getToken();
+            this.ui.showLoginStatus("Login Berhasil", true);
         }
 
         Log.d("token", Key.TOKEN);
     }
+
 }
