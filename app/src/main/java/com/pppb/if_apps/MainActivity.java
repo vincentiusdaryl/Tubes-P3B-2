@@ -13,9 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.R;
+import com.pppb.if_apps.View.FragmentFRS;
 import com.pppb.if_apps.View.FragmentHome;
 import com.pppb.if_apps.View.FragmentLogin;
 import com.pppb.if_apps.View.FragmentPengumuman;
+import com.pppb.if_apps.View.FragmentPertemuan;
 import com.pppb.if_apps.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentHome fragmentHome;
     private FragmentPengumuman fragmentPengumuman;
     private FragmentTransaction fragmentTransaction;
+    private FragmentPertemuan fragmentPertemuan;
+    private FragmentFRS fragmentFRS;
     private Fragment[] fragments;
     private int currentFragment;
     private DrawerLayout drawer;
@@ -39,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
         this.fragmentHome = FragmentHome.newInstance();
         this.fragmentLogin = FragmentLogin.newInstance();
         this.fragmentPengumuman = FragmentPengumuman.newInstance();
+        this.fragmentPertemuan = FragmentPertemuan.newInstance();
+        this.fragmentFRS = FragmentFRS.newInstance();
 
         // Gathering all fragments in one array
         this.fragments = new Fragment[]{
                 this.fragmentLogin,
                 this.fragmentHome,
-                this.fragmentPengumuman
+                this.fragmentPengumuman,
+                this.fragmentPertemuan,
+                this.fragmentFRS
         };
 
         // Fragment Mover
