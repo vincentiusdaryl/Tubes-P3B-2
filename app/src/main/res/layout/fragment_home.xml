@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,44 +32,41 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="pengumuman"
-                android:id="@+id/btnPengumuman"
+                android:layout_height="250dp"
+                android:src="@drawable/ic_baseline_notifications_24"
                 android:layout_weight="1"
-                android:layout_marginLeft="25dp"/>
+                android:id="@+id/iv_Pengumuman"/>
 
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="pertemuan"
-                android:id="@+id/btnPertemuan"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_people"
                 android:layout_weight="1"
-                android:layout_marginRight="25dp"/>
+                android:id="@+id/iv_Pertemuan"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="frs"
-                android:id="@+id/btnFRS"
+                android:layout_height="250dp"
+                android:src="@drawable/ic_baseline_edit_note_24"
                 android:layout_weight="1"
-                android:layout_marginLeft="25dp" />
+                android:id="@+id/iv_frs"/>
 
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="keluar"
-                android:id="@+id/btnKeluar"
+                android:layout_height="250dp"
+                android:src="@drawable/ic_baseline_logout_24"
                 android:layout_weight="1"
-                android:layout_marginRight="25dp" />
+                android:id="@+id/iv_logout"/>
 
         </LinearLayout>
 
