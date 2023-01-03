@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment;
 
 import com.pppb.if_apps.databinding.FragmentFrsBinding;
 
-
-
 public class fragment_frs extends Fragment {
     FragmentFrsBinding binding;
 
