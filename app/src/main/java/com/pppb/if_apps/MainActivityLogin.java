@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.pppb.if_apps.Model.Key;
+import com.pppb.if_apps.Presenter.LoginPresenter;
 import com.pppb.if_apps.databinding.ActivityMainLoginBinding;
 
 public class MainActivityLogin extends AppCompatActivity implements View.OnClickListener {
@@ -18,6 +20,7 @@ public class MainActivityLogin extends AppCompatActivity implements View.OnClick
     Button button1;
     Button button2;
     Button button3;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,26 +1,33 @@
 package com.pppb.if_apps;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pppb.if_apps.View.FragmentPengumuman;
 import com.pppb.if_apps.databinding.FragmentListpengumumanBinding;
 
 import java.util.ArrayList;
 
 public class listPengumumanAdapter extends BaseAdapter {
-
     private Context context;
     FragmentListpengumumanBinding binding;
     private ArrayList<listPengumumanAdapter> listPengumuman;
+    private Activity activity;
+    private FragmentManager fragmentManager;
 
-    public listPengumumanAdapter(Context context, ArrayList<listPengumumanAdapter> listPengumuman){
-        this.context = context;
-        this.listPengumuman = listPengumuman;
+    public listPengumumanAdapter(Activity activity, FragmentManager fragmentManager){
+        this.activity = activity;
+        this.fragmentManager = fragmentManager;
+        this.listPengumuman = new ArrayList<>();
+
     }
 
     @Override

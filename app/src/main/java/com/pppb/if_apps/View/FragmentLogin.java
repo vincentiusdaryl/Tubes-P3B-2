@@ -74,8 +74,6 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
         this.fragmentManager.setFragmentResult(Key.CHANGE_PAGE, result);
     }
 
-
-
     public void showLoginStatus(String loginStatus, boolean statusLogin){
         if(statusLogin){
             this.closeSoftKeyboard();
