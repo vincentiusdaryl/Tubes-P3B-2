@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Matakuliah"
-            android:id="@+id/tv_namaMatkulPrasyarat2"
+            android:id="@+id/tv_listpertemuan_judul"
 
             >
         </TextView>
@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:id="@+id/tv_listpertemuantanggal"
+            android:id="@+id/tv_listpertemuan_tanggal"
 
             >
         </TextView>
