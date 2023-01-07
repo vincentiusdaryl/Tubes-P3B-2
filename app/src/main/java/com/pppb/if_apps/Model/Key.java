@@ -24,4 +24,10 @@ public class Key {
     public final static String ROLE_ADMIN = "admin";
     public final static String ROLE_DOSEN = "lecturer";
     public final static String ROLE_MHS = "student";
+
+    //Key for pref_username and password and status
+    public final static String PREF_IS_LOGIN = "PREF_IS_LOGIN";
+    public final static String PREF_EMAIL = "PREF_EMAIL";
+    public final static String PREF_PASSWORD = "PREF_PASSWORD";
+    public final static String PREF_ROLE = "PREF_ROLE";
 }
