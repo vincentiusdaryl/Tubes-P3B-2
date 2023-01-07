@@ -5,5 +5,6 @@ import android.view.View;
 import com.pppb.if_apps.Model.GetPengumuman;
 
 public interface IPengumuman {
-    void getPengumumanList(GetPengumuman list);
+
+    void getPengumumanList(GetPengumuman res);
 }

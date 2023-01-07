@@ -23,32 +23,30 @@ public class PengumumanPresenter {
     private Context context;
     private Gson gson;
     private FragmentPengumumanBinding binding;
+    private String token;
 
-    public PengumumanPresenter(IPengumuman ui, Context context, FragmentPengumumanBinding binding){
+    public PengumumanPresenter(IPengumuman ui, Context context){
         this.ui = (IPengumuman) ui;
         this.context = context;
         this.binding = binding;
         this.gson = new Gson();
     }
     public void getPengumuman(){
-        try {
-            this.callVolley(new JSONObject(this.gson.toJson(new GetPengumuman())));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            String token = Key.TOKEN;
+            this.callVolley(token);
     }
 
-    public void callVolley(JSONObject jsonObject){
-        String url = Key.BASE_URL + "announcement/";
+    public void callVolley(String token){
+        String url = Key.BASE_URL + "announcements/";
         RequestQueue queue = Volley.newRequestQueue(this.context);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
                         processResult(response.toString());
-                        Log.d("response", response.toString());
+                        Log.d("respons", response.toString());
                     }
                 }, new Response.ErrorListener() {
 
@@ -67,7 +65,15 @@ public class PengumumanPresenter {
                             }
                         }
                     }
-                });
+                }){
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                HashMap headers = new HashMap<>();
+//                headers.put("Content-Type", "application/json");
+//                headers.put("token", Key.TOKEN);
+//                return headers;
+//            }
+        };
         queue.add(jsonObjectRequest);
     }
     private void processResult(String jsonObject) {

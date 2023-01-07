@@ -20,6 +20,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
     private FragmentLoginBinding binding;
     private LoginPresenter presenter;
     private FragmentManager fragmentManager;
+    private String token = "";
 
     public FragmentLogin() {
 
@@ -79,10 +80,21 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
             this.closeSoftKeyboard();
             this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.green));
             this.changePage(1);
+            this.sendToken(token);
         }
         else{
             this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.red));
             this.binding.tvStatusLogin.setText(loginStatus);
         }
+    }
+
+    public void sendToken(String token){
+        Bundle result = new Bundle();
+        result.putString("token", token);
+        this.fragmentManager.setFragmentResult("GET_TOKEN", result);
+    }
+
+    public void setToken (String token) {
+        this.token = token;
     }
 }
