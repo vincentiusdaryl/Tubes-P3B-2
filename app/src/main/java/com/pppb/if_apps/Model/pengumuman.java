@@ -1,4 +1,4 @@
-package com.pppb.if_apps;
+package com.pppb.if_apps.Model;
 
 public class pengumuman {
     private String judul;
