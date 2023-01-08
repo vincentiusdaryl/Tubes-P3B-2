@@ -12,7 +12,7 @@
         android:layout_centerInParent="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
@@ -26,15 +26,14 @@
             </TextView>
             <EditText
                 android:id="@+id/et_email"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                >
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
 
             </EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
@@ -48,7 +47,7 @@
             </TextView>
             <EditText
                 android:id="@+id/et_pwd"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword">
 
@@ -75,9 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mahasiswa"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:src="@drawable/button1"
-                >
+                android:layout_marginRight="5dp">
 
             </Button>
             <Button
