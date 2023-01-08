@@ -10,4 +10,5 @@ public class Login {
         this.password = password;
         this.role = role;
     }
+
 }
