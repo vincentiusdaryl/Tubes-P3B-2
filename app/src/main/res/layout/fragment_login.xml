@@ -80,7 +80,9 @@
                 android:id="@+id/btn_dosen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dosen"/>
+                android:background="@drawable/button_dosen"
+                android:text="Dosen"
+                />
 
             <Button
                 android:id="@+id/btn_mhs"
@@ -88,13 +90,17 @@
                 android:layout_height="wrap_content"
                 android:text="Mahasiswa"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:background="@drawable/button_dosen"
+                />
 
             <Button
                 android:id="@+id/btn_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Admin"/>
+                android:text="Admin"
+                android:background="@drawable/button_dosen"
+                />
         </LinearLayout>
 
         <TextView
