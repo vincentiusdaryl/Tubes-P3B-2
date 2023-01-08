@@ -16,10 +16,6 @@
         android:theme="@style/Theme.IF_Apps"
         tools:targetApi="31">
         <activity
-            android:name="MainActivityLogin"
-            android:exported="true">
-        </activity>
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
