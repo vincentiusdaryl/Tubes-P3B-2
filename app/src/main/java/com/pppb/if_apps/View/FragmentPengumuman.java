@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.GetPengumuman;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Model.Pengumumann;
@@ -26,6 +27,7 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     private listPengumumanAdapter adapter;
     private String token;
     private PengumumanPresenter presenter;
+    private SharedPreferenceHelper spHelper;
 
     public FragmentPengumuman() {
     }
@@ -66,6 +68,7 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     private void getToken (String token){
         if(token!=null){
             this.token = Key.TOKEN;
+            spHelper.getString("token");
             Log.d("token pengumuman", this.token);
         }else{
             Log.e("NO TOKEN","");

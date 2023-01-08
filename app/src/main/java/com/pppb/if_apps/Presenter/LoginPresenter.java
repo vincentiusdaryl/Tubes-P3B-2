@@ -3,6 +3,7 @@ package com.pppb.if_apps.Presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,6 +25,7 @@ public class LoginPresenter {
     private Context context;
     private Gson gson;
     private FragmentLoginBinding binding;
+    private SharedPreferenceHelper spHelper;
 
     public LoginPresenter(ILogin ui, Context context, FragmentLoginBinding binding){
         this.ui = (ILogin) ui;
@@ -84,7 +86,9 @@ public class LoginPresenter {
         String token = "";
         if(res.getToken()!=null){
             Key.TOKEN = res.getToken();
+            spHelper.saveString("token",Key.TOKEN);
             token = res.getToken();
+
             this.ui.showLoginStatus("Login Berhasil", true);
         }
 
