@@ -89,6 +89,7 @@
             android:layout_height="wrap_content"
             android:text="AMBIL"
             android:layout_gravity="center"
+            android:background="@drawable/button_dosen"
             >
 
         </Button>

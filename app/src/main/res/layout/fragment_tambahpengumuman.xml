@@ -104,6 +104,7 @@
             android:layout_height="wrap_content"
             android:text="SIMPAN"
             android:id="@+id/button_simpan"
+            android:background="@drawable/button_dosen"
             >
 
         </Button>
