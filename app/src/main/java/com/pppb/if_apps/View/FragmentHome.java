@@ -31,25 +31,25 @@ public class FragmentHome extends Fragment implements View.OnClickListener, IHom
         this.binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         this.presenter = new HomePresenter(this, getActivity(), binding);
-        this.binding.btnPengumuman.setOnClickListener(this::onClick);
-        this.binding.btnPertemuan.setOnClickListener(this::onClick);
-        this.binding.btnFRS.setOnClickListener(this::onClick);
-        this.binding.btnKeluar.setOnClickListener(this::onClick);
+        this.binding.ivPengumuman.setOnClickListener(this::onClick);
+        this.binding.ivPertemuan.setOnClickListener(this::onClick);
+        this.binding.ivFrs.setOnClickListener(this::onClick);
+        this.binding.ivLogout.setOnClickListener(this::onClick);
         return this.binding.getRoot();
     }
 
     @Override
     public void onClick(View view) {
-        if(view == this.binding.btnPengumuman){
+        if(view == this.binding.ivPengumuman){
             this.changePage(Key.FRAGMENT_PENGUMUMAN);
         }
-        else if(view == this.binding.btnPertemuan){
+        else if(view == this.binding.ivPertemuan){
             this.changePage(Key.FRAGMENT_PERTEMUAN);
         }
-        else if(view == this.binding.btnFRS){
+        else if(view == this.binding.ivFrs){
             this.changePage(Key.FRAGMENT_FRS);
         }
-        else if(view == this.binding.btnKeluar){
+        else if(view == this.binding.ivLogout){
             this.changePage(Key.PAGE_EXIT);
         }
     }
