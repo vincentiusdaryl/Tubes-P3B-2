@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_toStartOf="@+id/tv_email">
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +18,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_marginTop="75dp">
+        android:layout_marginTop="75dp"
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +83,9 @@
                 android:id="@+id/btn_dosen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dosen"/>
+                android:text="Dosen"
+                android:src="@drawable/button1"
+                />
 
             <Button
                 android:id="@+id/btn_mhs"
@@ -88,7 +93,10 @@
                 android:layout_height="wrap_content"
                 android:text="Mahasiswa"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:textStyle=""
+
+                />
 
             <Button
                 android:id="@+id/btn_admin"

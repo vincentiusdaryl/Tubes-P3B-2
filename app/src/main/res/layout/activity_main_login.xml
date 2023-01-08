@@ -74,7 +74,9 @@
                 android:layout_height="wrap_content"
                 android:text="Mahasiswa"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
+                android:layout_marginRight="5dp"
+
+                >
 
             </Button>
             <Button

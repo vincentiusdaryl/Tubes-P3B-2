@@ -38,8 +38,9 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/trash"
-        android:background="@android:drawable/ic_menu_call"
+        android:id="@+id/doublechecklist"
+        android:src="@drawable/onechecklist"
+        android:backgroundTint="@color/white"
 
         >
 
