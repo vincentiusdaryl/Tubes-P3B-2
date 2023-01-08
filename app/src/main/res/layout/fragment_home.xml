@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/background_button_home"
-                android:id="@+id/iv_Pengumuman"/>
+                android:id="@+id/iv_pengumuman"/>
 
             <ImageView
                 android:layout_width="150dp"
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/background_button_home"
-                android:id="@+id/iv_Pertemuan"/>
+                android:id="@+id/iv_pertemuan"/>
 
             <ImageView
                 android:layout_width="150dp"
