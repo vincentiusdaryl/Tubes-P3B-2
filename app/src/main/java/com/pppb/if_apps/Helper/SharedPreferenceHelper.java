@@ -42,16 +42,6 @@ public class SharedPreferenceHelper {
             return mSharedPreferences.getBoolean(key, false);
         }
 
-        public void put(String key, String value){
-            editor.putString(key, value)
-                    .apply();
-
-        }
-        public void put(String key, Boolean value){
-            editor.putBoolean(key, value)
-                .apply();
-        }
-
         public void clear(){
             editor.clear()
             .apply();
