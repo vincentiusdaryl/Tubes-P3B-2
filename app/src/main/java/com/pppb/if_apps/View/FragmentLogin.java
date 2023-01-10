@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Presenter.LoginPresenter;
 import com.pppb.if_apps.R;
@@ -21,6 +22,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
     private LoginPresenter presenter;
     private FragmentManager fragmentManager;
     private String token = "";
+    private SharedPreferenceHelper spHelper;
 
     public FragmentLogin() {
 
@@ -81,6 +83,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
             this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.green));
             this.changePage(1);
             this.sendToken(token);
+
         }
         else{
             this.binding.tvStatusLogin.setTextColor(getResources().getColor(R.color.red));

@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Model.Login;
 import com.pppb.if_apps.Model.ResLogin;
@@ -24,6 +25,7 @@ public class LoginPresenter {
     private Context context;
     private Gson gson;
     private FragmentLoginBinding binding;
+    private SharedPreferenceHelper spHelper;
 
     public LoginPresenter(ILogin ui, Context context, FragmentLoginBinding binding){
         this.ui = (ILogin) ui;
@@ -87,6 +89,7 @@ public class LoginPresenter {
             token = res.getToken();
             this.ui.showLoginStatus("Login Berhasil", true);
         }
+
 
         Log.d("token", Key.TOKEN);
     }
