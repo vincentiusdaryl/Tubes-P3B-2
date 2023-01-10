@@ -40,7 +40,7 @@ public class PengumumanPresenter {
     }
 
     public void callVolley(String token){
-        String url = Key.BASE_URL + "announcements/";
+        String url = Key.BASE_URL + "announcements?limit=10";
         RequestQueue queue = Volley.newRequestQueue(this.context);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -48,7 +48,11 @@ public class PengumumanPresenter {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        processResult(response.toString());
+                        try {
+                            processResult(response.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         Log.d("respons", response.toString());
                     }
                 }, new Response.ErrorListener() {
@@ -78,7 +82,7 @@ public class PengumumanPresenter {
         };
         queue.add(jsonObjectRequest);
     }
-    private void processResult(String jsonObject) {
+    private void processResult(String jsonObject) throws JSONException {
         GetPengumuman res = gson.fromJson(jsonObject, GetPengumuman.class);
         this.ui.getPengumumanList(res);
     }

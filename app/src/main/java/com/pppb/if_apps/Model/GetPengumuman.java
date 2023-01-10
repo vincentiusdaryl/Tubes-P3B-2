@@ -3,7 +3,7 @@ package com.pppb.if_apps.Model;
 import java.util.ArrayList;
 
 public class GetPengumuman {
-    public ArrayList<Content> pengumuman;
+    public ArrayList<Content> pengumuman = new ArrayList<>();
 
     public class Content {
         public String id;
