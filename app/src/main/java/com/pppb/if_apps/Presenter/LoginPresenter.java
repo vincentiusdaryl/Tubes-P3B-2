@@ -86,7 +86,6 @@ public class LoginPresenter {
         String token = "";
         if(res.getToken()!=null){
             Key.TOKEN = res.getToken();
-            spHelper.saveString("token",Key.TOKEN);
             token = res.getToken();
 
             this.ui.showLoginStatus("Login Berhasil", true);

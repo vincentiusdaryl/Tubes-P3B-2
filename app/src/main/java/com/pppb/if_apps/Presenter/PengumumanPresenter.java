@@ -18,6 +18,9 @@ import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PengumumanPresenter {
     private IPengumuman ui;
     private Context context;
@@ -66,13 +69,12 @@ public class PengumumanPresenter {
                         }
                     }
                 }){
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                HashMap headers = new HashMap<>();
-//                headers.put("Content-Type", "application/json");
-//                headers.put("token", Key.TOKEN);
-//                return headers;
-//            }
+            @Override
+            public Map<String, String> getHeaders() {
+            Map<String, String> headers = new HashMap<>();
+            headers.put("Authorization", "Bearer " + token);
+            return headers;
+            }
         };
         queue.add(jsonObjectRequest);
     }
