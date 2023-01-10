@@ -2,6 +2,9 @@ package com.pppb.if_apps.Presenter;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,6 +33,8 @@ public class PengumumanPresenter {
     private Gson gson;
     private FragmentPengumumanBinding binding;
     private String token;
+    private ListView lv;
+    private ArrayList<Pengumumann> list_pengumuman;
 
     public PengumumanPresenter(IPengumuman ui, Context context) {
         this.ui = (IPengumuman) ui;
@@ -41,6 +46,58 @@ public class PengumumanPresenter {
     public void getPengumuman() {
         String token = Key.TOKEN;
         this.callVolley(token);
+    }
+
+    public void clickPengumuman(){
+        lv.setOnItemClickListener(this::onClickItem);
+    }
+
+    private void onClickItem(AdapterView<?> adapterView, View view, int i, long l) {
+        getDetails(list_pengumuman.get(i).getId());
+    }
+
+    public void getDetails(String id) {
+        String url = Key.BASE_URL + "announcements/" + id;
+        RequestQueue queue = Volley.newRequestQueue(this.context);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            detailAnnouncement(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("respons", response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        String body;
+                        String errRes;
+                        if (error.networkResponse.data != null) {
+                            try {
+                                body = new String(error.networkResponse.data);
+                                JSONObject json = new JSONObject(body);
+                                errRes = json.getString("errcode");
+                                Log.d("error", errRes);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+        queue.add(jsonObjectRequest);
     }
 
     public void callVolley(String token) {
@@ -87,14 +144,10 @@ public class PengumumanPresenter {
         queue.add(jsonObjectRequest);
     }
 
-    //    private void processResult(String jsonObject) throws JSONException {
-//        GetPengumuman res = gson.fromJson(jsonObject, GetPengumuman.class);
-//        this.ui.getPengumumanList(res);
-//    }
-    private void processResult(JSONObject response) throws JSONException {
+    private void detailAnnouncement(JSONObject response) throws JSONException {
         JSONArray data = response.getJSONArray("data");
         int len = data.length();
-        ArrayList<Pengumumann> list_pengumuman = new ArrayList<>();
+        list_pengumuman = new ArrayList<>();
         for (int i = 0; i < len; i++) {
             JSONObject jsonObject = data.getJSONObject(i);
             String id = jsonObject.getString("id");
@@ -115,8 +168,37 @@ public class PengumumanPresenter {
                     tag_id[j] = tags_item.getString("tag_id");
                 }
             }
+            Pengumumann pengumumann = new Pengumumann(id, title, updated_at, created_at, author_id,
+                    author_name, tag_name, tag_id);
+            list_pengumuman.add(pengumumann);
+        }
+        this.ui.getPengumumanList(list_pengumuman);
+    }
 
-
+    private void processResult(JSONObject response) throws JSONException {
+        JSONArray data = response.getJSONArray("data");
+        int len = data.length();
+        list_pengumuman = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            JSONObject jsonObject = data.getJSONObject(i);
+            String id = jsonObject.getString("id");
+            String title = jsonObject.getString("title");
+            String updated_at = jsonObject.getString("updated_at");
+            String created_at = jsonObject.getString("created_at");
+            JSONObject author = jsonObject.getJSONObject("author");
+            String author_id = author.getString("id");
+            String author_name = author.getString("author");
+            JSONArray tags = jsonObject.getJSONArray("tags");
+            int tag_length = tags.length();
+            String[] tag_name = new String[tag_length];
+            String[] tag_id = new String[tag_length];
+            if (tag_length > 0) {
+                for (int j = 0; j < tag_length; j++) {
+                    JSONObject tags_item = tags.getJSONObject(j);
+                    tag_name[j] = tags_item.getString("tag");
+                    tag_id[j] = tags_item.getString("tag_id");
+                }
+            }
             Pengumumann pengumumann = new Pengumumann(id, title, updated_at, created_at, author_id,
                     author_name, tag_name, tag_id);
             list_pengumuman.add(pengumumann);

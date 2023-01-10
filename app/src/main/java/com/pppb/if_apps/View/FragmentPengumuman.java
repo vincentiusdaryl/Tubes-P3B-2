@@ -81,6 +81,12 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         ListView listView = binding.lwPengumuman;
         listView.setAdapter(adapter);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.clickPengumuman();
+    }
 }
 
 
