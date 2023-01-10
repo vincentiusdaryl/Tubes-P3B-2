@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -65,35 +66,23 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         return view;
     }
 
-    private void getToken (String token){
-        if(token!=null){
+    private void getToken(String token) {
+        if (token != null) {
             this.token = Key.TOKEN;
             Log.d("token pengumuman", this.token);
-        }else{
-            Log.e("NO TOKEN","");
+        } else {
+            Log.e("NO TOKEN", "");
         }
     }
 
     @Override
-    public void getPengumumanList(GetPengumuman res) {
-        int len = res.pengumuman.size();
-        ArrayList<Pengumumann> list = new ArrayList<>();
-        if(len>0){
-            for(int i = 0; i<len; i++){
-                String id = res.pengumuman.get(i).id;
-                String title = res.pengumuman.get(i).title;
-                String updated_at = res.pengumuman.get(i).updated_at;
-                String created_at = res.pengumuman.get(i).created_at;
-                String author = res.pengumuman.get(i).author;
-                String[] tags = res.pengumuman.get(i).tags;
-                String[] tag_id = res.pengumuman.get(i).tag_id;
-//                list.add(new GetPengumuman(id, title, updated_at, created_at, author, tags, tag_id));
-                list.add(new Pengumumann(id, title, updated_at, created_at, author, tags, tag_id));
-            }
-            this.adapter.update(list);
-        }
+    public void getPengumumanList(ArrayList<Pengumumann> list_pengumuman) {
+        adapter.update(list_pengumuman);
+        ListView listView = binding.lwPengumuman;
+        listView.setAdapter(adapter);
     }
 }
+
 
 
 

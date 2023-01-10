@@ -5,18 +5,21 @@ public class Pengumumann {
     private String title;
     private String updated_at;
     private String created_at;
-    private String author;
-    private String[] tags;
+    private String author_id;
+    private String author_name;
+    private String[] tag_name;
     private String[] tag_id;
 
 
-    public Pengumumann(String id, String title, String updated_at, String created_at, String author, String[] tags, String[] tag_id){
+    public Pengumumann(String id, String title, String updated_at, String created_at, String author_id, String author_name,
+                       String[] tag_name, String[] tag_id){
         this.id = id;
         this.title = title;
         this.updated_at = updated_at;
         this.created_at = created_at;
-        this.author = author;
-        this.tags = tags;
+        this.author_id = author_id;
+        this.author_name = author_name;
+        this.tag_name = tag_name;
         this.tag_id = tag_id;
     }
 
@@ -53,20 +56,28 @@ public class Pengumumann {
         this.created_at = created_at;
     }
 
-    public String getAuthor(){
-        return author;
+    public String getAuthor_id(){
+        return author_id;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor_id(String author_id) {
+        this.author_id = author_id;
     }
 
-    public String[] getTags(){
-        return tags;
+    public String getAuthor_name(){
+        return author_name;
     }
 
-    public void setTags(String[] tags) {
-        this.tags = tags;
+    public void setAuthor_name(String author_name) {
+        this.author_name = author_name;
+    }
+
+    public String[] getTag_name(){
+        return tag_name;
+    }
+
+    public void setTag_name(String[] tag_name) {
+        this.tag_name = tag_name;
     }
 
     public String[] getTag_id(){
@@ -76,4 +87,5 @@ public class Pengumumann {
     public void setTag_id(String[] tag_id) {
         this.tag_id = tag_id;
     }
+
 }

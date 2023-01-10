@@ -10,13 +10,14 @@ import android.widget.BaseAdapter;
 import androidx.fragment.app.FragmentManager;
 
 import com.pppb.if_apps.Model.Pengumumann;
+import com.pppb.if_apps.databinding.FragmentListpengumumanBinding;
 import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 
 import java.util.ArrayList;
 
 public class listPengumumanAdapter extends BaseAdapter {
     private Context context;
-    FragmentPengumumanBinding binding;
+    FragmentListpengumumanBinding binding;
     private ArrayList<Pengumumann> listPengumuman;
     private Activity activity;
     private FragmentManager fragmentManager;
@@ -52,20 +53,21 @@ public class listPengumumanAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         Pengumumann pem =(Pengumumann) this.getItem(i);
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        binding = FragmentPengumumanBinding.inflate(inflater);
+        binding = FragmentListpengumumanBinding.inflate(inflater);
         view = binding.getRoot();
         view.setTag(binding);
 
-        String id = pem.getId();
-        String title = pem.getTitle();
-        String updated_at = pem.getUpdated_at();
-        String created_at = pem.getCreated_at();
-        String author = pem.getAuthor();
-        String[] tags = pem.getTags();
-        String[] tag_id = pem.getTag_id();
-
+        binding.tvTitlePengumuman.setText(pem.getTitle());
+        if(pem.getTag_name().length>0){
+            String tag_name = pem.getTag_name()[0];
+            int len = pem.getTag_name().length;
+            for(int j = 1; j<len; j++){
+                tag_name += ", "+pem.getTag_name()[j];
+            }
+            binding.tvTags.setText(tag_name);
+        }
         return view;
-
     }
+
 }
 
