@@ -67,8 +67,7 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
 
     private void getToken (String token){
         if(token!=null){
-            this.token = Key.TOKEN;
-            spHelper.getString("token");
+            this.token = spHelper.getString("token");
             Log.d("token pengumuman", this.token);
         }else{
             Log.e("NO TOKEN","");
