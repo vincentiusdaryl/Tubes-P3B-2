@@ -77,9 +77,9 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     @Override
     public void getPengumumanList(GetPengumuman res) {
         int len = res.pengumuman.size();
-        ArrayList<Pengumumann> list = new ArrayList<>();
+        ArrayList<Pengumumann> list = new ArrayList<>(len);
         if(len>0){
-            for(int i = 0; i<len; i++){
+            for(int i = 0; i<list.size(); i++){
                 String id = res.pengumuman.get(i).id;
                 String title = res.pengumuman.get(i).title;
                 String updated_at = res.pengumuman.get(i).updated_at;
