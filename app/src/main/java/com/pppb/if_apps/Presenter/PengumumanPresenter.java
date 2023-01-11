@@ -146,8 +146,6 @@ public class PengumumanPresenter {
         queue.add(jsonObjectRequest);
     }
 
-
-
     private void processResult(JSONObject response) throws JSONException {
         JSONArray data = response.getJSONArray("data");
         int len = data.length();

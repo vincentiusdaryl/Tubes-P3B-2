@@ -18,8 +18,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Matakuliah"
-            android:id="@+id/tv_namaMatkulPrasyarat2"
+            android:hint="Judul"
+            android:id="@+id/tv_judulPertemuan"
 
             >
         </TextView>

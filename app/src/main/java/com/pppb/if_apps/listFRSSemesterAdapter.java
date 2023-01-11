@@ -1,24 +1,39 @@
 package com.pppb.if_apps;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import androidx.fragment.app.FragmentManager;
+
+import com.pppb.if_apps.Model.FRS;
+import com.pppb.if_apps.Model.Pengumumann;
 import com.pppb.if_apps.databinding.FragmentListfrsSemesterBinding;
+import com.pppb.if_apps.databinding.FragmentListpengumumanBinding;
 
 import java.util.ArrayList;
 
 public class listFRSSemesterAdapter extends BaseAdapter {
 
+    private FragmentManager fragmentManager;
     private Context context;
     FragmentListfrsSemesterBinding binding;
-    private ArrayList<listFRSSemesterAdapter> listFRSSemester;
+    private ArrayList<FRS> listFRSSemester;
+    private Activity activity;
 
-    public listFRSSemesterAdapter(Context context, ArrayList<listFRSSemesterAdapter> listFRSSemester){
+    public listFRSSemesterAdapter(Activity activity, FragmentManager fragmentManager){
+        this.activity = activity;
+        this.fragmentManager = fragmentManager;
         this.context = context;
-        this.listFRSSemester = listFRSSemester;
+        this.listFRSSemester= new ArrayList<>();
+    }
+    public void update(ArrayList<FRS> listFRSSemester) {
+        this.listFRSSemester.addAll(listFRSSemester);
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -38,31 +53,27 @@ public class listFRSSemesterAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        FRS frs = (FRS) this.getItem(i);
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         binding = FragmentListfrsSemesterBinding.inflate(inflater);
+        view = binding.getRoot();
+        view.setTag(binding);
 
-        View itemView = view;
-
-        if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.fragment_listfrs_semester, viewGroup, false);
+        int len = frs.getAcademic_years().length;
+        Log.d("cekLength",String.valueOf(len));
+        String years = String.valueOf(frs.getAcademic_years()[i]);
+        String years2 = String.valueOf(frs.getAcademic_years()[i+3]);
+        if (years.substring(4).equals("1")){
+            binding.tvTitleMatkul.setText("Semester Ganjil Tahun "+years.substring(0,4)+"-"+years2.substring(0,4));
+        }
+        if (years.substring(4).equals("2")){
+            binding.tvTitleMatkul.setText("Semester Genap Tahun "+years.substring(0,4)+"-"+years2.substring(0,4));
+        }
+        if (years.substring(4).equals("3")){
+            binding.tvTitleMatkul.setText("Semester Pendek Tahun "+years.substring(0,4)+"-"+years2.substring(0,4));
         }
 
-        ViewHolder viewHolder = new ViewHolder(itemView);
-        prasyaratsemester prasyaratsemester = (prasyaratsemester) getItem(i);
-        System.out.println(prasyaratsemester.getMatkul());
+        return view;
 
-        viewHolder.add(prasyaratsemester);
-        return binding.getRoot();
-
-    }
-    private class ViewHolder{
-
-        ViewHolder(View view){
-
-        }
-        void add(prasyaratsemester prasyaratsemester){
-            binding.tvNamaMatkulPrasyarat2.setText(prasyaratsemester.getMatkul());
-            binding.tvStatus.setText(prasyaratsemester.getStatus());
-        }
     }
 }

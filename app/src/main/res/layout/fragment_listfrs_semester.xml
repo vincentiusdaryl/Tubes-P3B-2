@@ -9,41 +9,25 @@
     >
 
     <LinearLayout
-        android:layout_width="145pt"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingEnd="10dp"
 
         >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Matakuliah"
-            android:id="@+id/tv_namaMatkulPrasyarat2"
-
-            >
-        </TextView>
 
         <TextView
+            android:id="@+id/tv_titleMatkul"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tempuh"
-            android:id="@+id/tv_status"
+            android:layout_height="match_parent"
+            android:hint="Semester Ganjil 2021/2022"
 
             >
+
         </TextView>
+
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/trash"
-        android:background="@android:drawable/ic_menu_call"
-
-        >
-
-
-    </ImageButton>
 
 </LinearLayout>
