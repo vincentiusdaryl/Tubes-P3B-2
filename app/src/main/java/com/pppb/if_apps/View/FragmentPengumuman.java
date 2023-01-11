@@ -70,6 +70,22 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
             }
         });
         this.presenter.getPengumuman();
+        binding.btnSearch.setOnClickListener(this::onClickSearch);
+        return view;
+    }
+
+    private View onClickSearch(View view) {
+        if(binding.tvSearchAuthor!=null){
+
+            this.fragmentManager.setFragmentResultListener("TOKEN", this, new FragmentResultListener() {
+                @Override
+                public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                    presenter.getPengumumanFilterSearchAuthor(binding.tvSearchAuthor.getText().toString());
+                }
+            });
+            this.presenter = new PengumumanPresenter(this, getActivity());
+            this.presenter.getPengumumanFilterSearchAuthor(binding.tvSearchAuthor.getText().toString());
+        }
         return view;
     }
 

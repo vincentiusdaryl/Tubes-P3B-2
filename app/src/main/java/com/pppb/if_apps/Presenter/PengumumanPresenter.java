@@ -34,6 +34,7 @@ public class PengumumanPresenter {
     private String token;
     private ListView lv;
     private ArrayList<Pengumumann> list_pengumuman;
+    private ArrayList<Pengumumann> filteredItems;
 
     public PengumumanPresenter(FragmentPengumuman ui, Context context) {
         this.ui = (IPengumuman) ui;
@@ -46,6 +47,12 @@ public class PengumumanPresenter {
         String token = SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN);
         Log.d("tokenHasilSave",SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
         this.callVolley(token);
+    }
+
+    public void getPengumumanFilterSearchAuthor(String searchAuthor){
+        String token = SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN);
+        Log.d("tokenHasilSave",SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
+        this.callVolleyFilterSearchAuthor(token,searchAuthor);
     }
 
     public void callVolley(String token) {
