@@ -87,12 +87,12 @@ public class LoginPresenter {
         if(res.getToken()!=null){
             Key.TOKEN = res.getToken();
             token = res.getToken();
-
+            SharedPreferenceHelper.setString(context.getApplicationContext(),Key.TOKEN,Key.TOKEN);
             this.ui.showLoginStatus("Login Berhasil", true);
         }
 
         Log.d("token", Key.TOKEN);
-        SharedPreferenceHelper.setString(context.getApplicationContext(),Key.TOKEN,Key.TOKEN);
+
         Log.d("CekTokenDiLP",SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
     }
 

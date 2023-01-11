@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.R;
+import com.pppb.if_apps.View.FragmentDetailPengumuman;
 import com.pppb.if_apps.View.FragmentFRS;
 import com.pppb.if_apps.View.FragmentHome;
 import com.pppb.if_apps.View.FragmentLogin;
@@ -27,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private FragmentLogin fragmentLogin;
     private FragmentHome fragmentHome;
     private FragmentPengumuman fragmentPengumuman;
+    private FragmentDetailPengumuman fragmentDetailPengumuman;
     private FragmentTransaction fragmentTransaction;
     private FragmentPertemuan fragmentPertemuan;
     private FragmentFRS fragmentFRS;
     private Fragment[] fragments;
     private int currentFragment;
     private DrawerLayout drawer;
+    private int[] backPointer={Key.PAGE_EXIT, Key.PAGE_EXIT, Key.FRAGMENT_HOME, Key.FRAGMENT_PENGUMUMAN, Key.FRAGMENT_HOME, Key.FRAGMENT_HOME};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         this.fragmentHome = FragmentHome.newInstance();
         this.fragmentLogin = FragmentLogin.newInstance();
         this.fragmentPengumuman = FragmentPengumuman.newInstance();
+        this.fragmentDetailPengumuman = FragmentDetailPengumuman.newInstance();
         this.fragmentPertemuan = FragmentPertemuan.newInstance();
         this.fragmentFRS = FragmentFRS.newInstance();
 
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 this.fragmentLogin,
                 this.fragmentHome,
                 this.fragmentPengumuman,
+                this.fragmentDetailPengumuman,
                 this.fragmentPertemuan,
                 this.fragmentFRS
         };
@@ -97,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             this.fragmentTransaction.commit();
             this.currentFragment = page;
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        changePage(backPointer[currentFragment]);
     }
 
     private void exitApplication () {

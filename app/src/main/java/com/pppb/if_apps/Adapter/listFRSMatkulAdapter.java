@@ -1,32 +1,21 @@
-package com.pppb.if_apps;
+package com.pppb.if_apps.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import androidx.fragment.app.FragmentManager;
-
-import com.pppb.if_apps.Model.FRS;
+import com.pppb.if_apps.R;
 import com.pppb.if_apps.databinding.FragmentListfrsMatkulBinding;
+import com.pppb.if_apps.matkul;
 
 import java.util.ArrayList;
 
 public class listFRSMatkulAdapter extends BaseAdapter {
     private Context context;
     FragmentListfrsMatkulBinding binding;
-    private ArrayList<FRS> listFRSMatkul;
-    private FragmentManager fragmentManager;
-    private Activity activity;
-
-
-    public listFRSMatkulAdapter(Activity activity, FragmentManager fragmentManager){
-        this.activity = activity;
-        this.fragmentManager = fragmentManager;
-        this.listFRSMatkul = new ArrayList<>();
-    }
+    private ArrayList<listFRSMatkulAdapter> listFRSMatkul;
 
     @Override
     public int getCount() {
@@ -51,7 +40,7 @@ public class listFRSMatkulAdapter extends BaseAdapter {
         View itemView = view;
 
         if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.fragment_listfrs_semester, viewGroup, false);
+            itemView = LayoutInflater.from(context).inflate(R.layout.fragment_listfrs_matkul, viewGroup, false);
         }
 
         listFRSMatkulAdapter.ViewHolder viewHolder = new listFRSMatkulAdapter.ViewHolder(itemView);
@@ -68,7 +57,7 @@ public class listFRSMatkulAdapter extends BaseAdapter {
 
         }
         void add(matkul matkul){
-            binding.tvNamaMatkulPrasyarat2.setText(matkul.getmatkul());
+            binding.tvTitleMatkul.setText(matkul.getmatkul());
         }
     }
 }
