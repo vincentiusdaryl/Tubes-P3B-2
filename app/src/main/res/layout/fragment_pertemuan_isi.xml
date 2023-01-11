@@ -10,6 +10,8 @@
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
         android:text="Judul Acara"
         android:textStyle="bold"
         android:id="@+id/tv_pertemuan_isi_judulacara"
@@ -58,7 +60,7 @@
         >
 
         <TextView
-
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tanggal"
@@ -69,7 +71,7 @@
         </TextView>
 
         <EditText
-
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -91,7 +93,7 @@
         >
 
         <TextView
-
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Partisipan"
@@ -102,7 +104,7 @@
         </TextView>
 
         <EditText
-
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -124,7 +126,7 @@
         >
 
         <TextView
-
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deskripsi:"
@@ -135,7 +137,7 @@
         </TextView>
 
         <TextView
-
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -161,9 +163,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:text="Accept"
             android:id="@+id/et_pertemuan_isi_buttonAccept"
             android:background="@drawable/button_dosen"
+            android:textSize="25dp"
+            android:fontFamily="@font/coolveticacondensedrg"
+
+
             >
 
         </Button>
@@ -172,9 +179,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="5dp"
             android:text="Reject"
             android:id="@+id/et_pertemuan_isi_buttonReject"
             android:background="@drawable/button_dosen"
+            android:textSize="25dp"
+            android:fontFamily="@font/coolveticacondensedrg"
+
+
             >
 
         </Button>

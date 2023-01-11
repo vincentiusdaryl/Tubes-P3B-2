@@ -1,6 +1,8 @@
 package com.pppb.if_apps;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 
 import androidx.annotation.NonNull;
@@ -30,9 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private FragmentPertemuan fragmentPertemuan;
     private FragmentFRS fragmentFRS;
+//    private SplashScreen fragmentSS;
+    private fragment_ss fragmentSS;
     private Fragment[] fragments;
     private int currentFragment;
     private DrawerLayout drawer;
+    private UIHandler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
 
+
         // Fragment Initiation
         this.fragmentHome = FragmentHome.newInstance();
         this.fragmentLogin = FragmentLogin.newInstance();
         this.fragmentPengumuman = FragmentPengumuman.newInstance();
         this.fragmentPertemuan = FragmentPertemuan.newInstance();
         this.fragmentFRS = FragmentFRS.newInstance();
+        this.fragmentSS = fragment_ss.newInstance();
+
 
         // Gathering all fragments in one array
         this.fragments = new Fragment[]{
@@ -53,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 this.fragmentHome,
                 this.fragmentPengumuman,
                 this.fragmentPertemuan,
-                this.fragmentFRS
+                this.fragmentFRS,
+                this.fragmentSS,
+
+
         };
 
         // Fragment Mover

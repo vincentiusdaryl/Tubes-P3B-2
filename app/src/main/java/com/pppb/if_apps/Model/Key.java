@@ -8,7 +8,9 @@ public class Key {
     public final static int FRAGMENT_PENGUMUMAN = 2;
     public final static int FRAGMENT_PERTEMUAN = 3;
     public final static int FRAGMENT_FRS = 4;
+    public final static int FRAGMENT_SS = 5;
     public final static int PAGE_EXIT = -999;
+
 
     // Key for fragment listener
     public final static String CHANGE_PAGE = "CHANGE_PAGE";

@@ -38,7 +38,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/trash"
+        android:id="@+id/checklist"
         android:src="@drawable/singlecheckout"
         android:backgroundTint="@color/white"
         >

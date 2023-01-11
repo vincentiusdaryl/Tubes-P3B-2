@@ -24,6 +24,7 @@ public class fragment_home extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         binding = FragmentHomeBinding.inflate(inflater);
         return binding.getRoot();
+
     }
 
     public static fragment_home newInstance(String title) {

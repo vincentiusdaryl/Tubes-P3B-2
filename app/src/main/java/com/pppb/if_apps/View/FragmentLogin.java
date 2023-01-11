@@ -1,19 +1,24 @@
 package com.pppb.if_apps.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.appcompat.view.SupportActionModeWrapper;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.pppb.if_apps.MainActivity;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Presenter.LoginPresenter;
 import com.pppb.if_apps.R;
+
 import com.pppb.if_apps.databinding.FragmentLoginBinding;
 
 public class FragmentLogin extends Fragment implements View.OnClickListener, ILogin {
