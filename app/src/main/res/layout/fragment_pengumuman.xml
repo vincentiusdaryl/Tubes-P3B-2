@@ -23,15 +23,7 @@
 
         </TextView>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="20dp"
-            android:hint="Input files here"
-            >
 
-        </EditText>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -40,7 +32,7 @@
                 android:id="@+id/tvSearchAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Search Author here"
+                android:hint="Search by title"
                 android:layout_marginRight="20dp"
                 />
 
