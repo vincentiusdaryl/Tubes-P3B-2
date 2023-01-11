@@ -49,10 +49,54 @@ public class PengumumanPresenter {
         this.callVolley(token);
     }
 
-    public void getPengumumanFilterSearchAuthor(String searchAuthor){
+    public void getPengumumanFilterSearchAuthor(String searchTitle){
         String token = SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN);
         Log.d("tokenHasilSave",SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
-        this.callVolleyFilterSearchAuthor(token,searchAuthor);
+        this.callVolleyFilterSearchTitle(token,searchTitle);
+    }
+
+    public void callVolleyFilterSearchTitle(String token,String searchTitle) {
+        String url = Key.BASE_URL + "announcements?filter[title]=" + searchTitle ;
+        RequestQueue queue = Volley.newRequestQueue(this.context);
+        Log.d("seardch", searchTitle);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            processResultSearch(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("respons", response.toString());
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        String body;
+                        String errRes;
+                        if (error.networkResponse.data != null) {
+                            try {
+                                body = new String(error.networkResponse.data);
+                                JSONObject json = new JSONObject(body);
+                                errRes = json.getString("errcode");
+                                Log.d("error", errRes);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
+                return headers;
+            }
+        };
+        queue.add(jsonObjectRequest);
     }
 
     public void callVolley(String token) {
@@ -99,42 +143,6 @@ public class PengumumanPresenter {
         queue.add(jsonObjectRequest);
     }
 
-    //method filter
-    private void processResultFilter(JSONObject response,String searchTitle) throws JSONException {
-        JSONArray data = response.getJSONArray("data");
-        int len = data.length();
-        list_pengumuman = new ArrayList<>();
-        for (int i = 0; i < len; i++) {
-            JSONObject jsonObject = data.getJSONObject(i);
-            String searchTitleDicari = jsonObject.getString("author");
-            if(searchTitleDicari == searchTitle){
-                String id = jsonObject.getString("id");
-                String title = jsonObject.getString("title");
-                String updated_at = jsonObject.getString("updated_at");
-                String created_at = jsonObject.getString("created_at");
-                JSONObject author = jsonObject.getJSONObject("author");
-                String author_id = author.getString("id");
-                String author_name = author.getString("author");
-                JSONArray tags = jsonObject.getJSONArray("tags");
-                int tag_length = tags.length();
-                String[] tag_name = new String[tag_length];
-                String[] tag_id = new String[tag_length];
-                if (tag_length > 0) {
-                    for (int j = 0; j < tag_length; j++) {
-                        JSONObject tags_item = tags.getJSONObject(j);
-                        tag_name[j] = tags_item.getString("tag");
-                        tag_id[j] = tags_item.getString("tag_id");
-                    }
-                }
-                Pengumumann pengumumann = new Pengumumann(id, title, updated_at, created_at, author_id,
-                        author_name, tag_name, tag_id);
-                list_pengumuman.add(pengumumann);
-
-            }
-        }
-        this.ui.getPengumumanList(list_pengumuman);
-    }
-
 
     private void processResult(JSONObject response) throws JSONException {
         JSONArray data = response.getJSONArray("data");
@@ -165,6 +173,36 @@ public class PengumumanPresenter {
             list_pengumuman.add(pengumumann);
         }
         this.ui.getPengumumanList(list_pengumuman);
+    }
+    private void processResultSearch(JSONObject response) throws JSONException {
+        JSONArray data = response.getJSONArray("data");
+        int len = data.length();
+        list_pengumuman = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            JSONObject jsonObject = data.getJSONObject(i);
+            String id = jsonObject.getString("id");
+            String title = jsonObject.getString("title");
+            String updated_at = jsonObject.getString("updated_at");
+            String created_at = jsonObject.getString("created_at");
+            JSONObject author = jsonObject.getJSONObject("author");
+            String author_id = author.getString("id");
+            String author_name = author.getString("author");
+            JSONArray tags = jsonObject.getJSONArray("tags");
+            int tag_length = tags.length();
+            String[] tag_name = new String[tag_length];
+            String[] tag_id = new String[tag_length];
+            if (tag_length > 0) {
+                for (int j = 0; j < tag_length; j++) {
+                    JSONObject tags_item = tags.getJSONObject(j);
+                    tag_name[j] = tags_item.getString("tag");
+                    tag_id[j] = tags_item.getString("tag_id");
+                }
+            }
+            Pengumumann pengumumann = new Pengumumann(id, title, updated_at, created_at, author_id,
+                    author_name, tag_name, tag_id);
+            list_pengumuman.add(pengumumann);
+        }
+        this.ui.getPengumumanSearch(list_pengumuman);
     }
 
     public void moveToDetail(String id){

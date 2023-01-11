@@ -9,5 +9,6 @@ import java.util.ArrayList;
 public interface IPengumuman {
 
     void getPengumumanList(ArrayList<Pengumumann> list_pengumuman);
+    void getPengumumanSearch(ArrayList<Pengumumann> list_pengumuman);
     void moveToDetail(String id);
 }
