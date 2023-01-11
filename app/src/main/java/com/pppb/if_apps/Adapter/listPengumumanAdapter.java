@@ -37,6 +37,11 @@ public class listPengumumanAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    public void clear(ArrayList<Pengumumann> listPengumuman){
+        this.listPengumuman.clear();
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return listPengumuman.size();

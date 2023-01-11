@@ -48,12 +48,6 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         this.presenter = new PengumumanPresenter(this, getActivity());
         this.adapter = new listPengumumanAdapter(getActivity(), this.getParentFragmentManager(), presenter);
         this.binding.lwPengumuman.setAdapter(adapter);
-        this.binding.lwPengumuman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
 
         this.fragmentManager.setFragmentResultListener("GET_TOKEN", this, new FragmentResultListener() {
             @Override
@@ -70,6 +64,22 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
             }
         });
         this.presenter.getPengumuman();
+        binding.btnSearch.setOnClickListener(this::onClickSearch);
+        return view;
+    }
+
+    private View onClickSearch(View view) {
+        if(binding.tvSearchAuthor!=null){
+
+            this.fragmentManager.setFragmentResultListener("TOKEN", this, new FragmentResultListener() {
+                @Override
+                public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                    presenter.getPengumumanFilterSearchAuthor(binding.tvSearchAuthor.getText().toString());
+                }
+            });
+            this.presenter = new PengumumanPresenter(this, getActivity());
+            this.presenter.getPengumumanFilterSearchAuthor(binding.tvSearchAuthor.getText().toString());
+        }
         return view;
     }
 
@@ -90,6 +100,14 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
 
     @Override
     public void getPengumumanList(ArrayList<Pengumumann> list_pengumuman) {
+        adapter.update(list_pengumuman);
+        ListView listView = binding.lwPengumuman;
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void getPengumumanSearch(ArrayList<Pengumumann> list_pengumuman) {
+        adapter.clear(list_pengumuman);
         adapter.update(list_pengumuman);
         ListView listView = binding.lwPengumuman;
         listView.setAdapter(adapter);

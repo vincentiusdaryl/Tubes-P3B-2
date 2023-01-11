@@ -61,8 +61,6 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
         return view;
     }
 
-
-
     private void getToken(String token) {
         if (token != null) {
             this.token = Key.TOKEN;
@@ -71,7 +69,6 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
             Log.e("NO TOKEN", "");
         }
     }
-
 
     @Override
     public void updateDetail(DetailPengumuman detailPengumuman) {
