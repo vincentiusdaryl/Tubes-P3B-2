@@ -1,4 +1,4 @@
-package com.pppb.if_apps;
+package com.pppb.if_apps.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.pppb.if_apps.R;
 import com.pppb.if_apps.databinding.FragmentListfrsSemesterBinding;
+import com.pppb.if_apps.prasyaratsemester;
 
 import java.util.ArrayList;
 

@@ -6,13 +6,15 @@ public class Key {
     public final static int FRAGMENT_LOGIN = 0;
     public final static int FRAGMENT_HOME = 1;
     public final static int FRAGMENT_PENGUMUMAN = 2;
-    public final static int FRAGMENT_PERTEMUAN = 3;
-    public final static int FRAGMENT_FRS = 4;
+    public final static int FRAGMENT_DETAIL_PENGUMUMAN = 3;
+    public final static int FRAGMENT_PERTEMUAN = 4;
+    public final static int FRAGMENT_FRS = 5;
     public final static int PAGE_EXIT = -999;
 
     // Key for fragment listener
     public final static String CHANGE_PAGE = "CHANGE_PAGE";
     public final static String CHANGE_PAGE_NUMBER = "CHANGE_PAGE_NUMBER";
+    public final static String MOVE_TO_DETAILP = "MOVE_TO_DETAILP";
 
     //Key for Token
     public static String TOKEN = "";

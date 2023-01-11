@@ -1,4 +1,4 @@
-package com.pppb.if_apps;
+package com.pppb.if_apps.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -67,6 +67,7 @@ public class listPengumumanAdapter extends BaseAdapter {
                 tag_name += ", " + pem.getTag_name()[j];
             }
             binding.tvTags.setText(tag_name);
+            binding.getRoot().setOnClickListener();
         }
         return view;
     }

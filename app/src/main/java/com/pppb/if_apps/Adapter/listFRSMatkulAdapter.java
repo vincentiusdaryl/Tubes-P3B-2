@@ -1,4 +1,4 @@
-package com.pppb.if_apps;
+package com.pppb.if_apps.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.pppb.if_apps.R;
 import com.pppb.if_apps.databinding.FragmentListfrsMatkulBinding;
-import com.pppb.if_apps.databinding.FragmentListfrsMatkulprasyaratBinding;
+import com.pppb.if_apps.matkul;
 
 import java.util.ArrayList;
 
