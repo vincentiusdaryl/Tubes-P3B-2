@@ -69,7 +69,7 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
             Log.e("NO TOKEN", "");
         }
     }
-    
+
     @Override
     public void updateDetail(DetailPengumuman detailPengumuman) {
         this.binding.tvJudul.setText(detailPengumuman.getTitle());
