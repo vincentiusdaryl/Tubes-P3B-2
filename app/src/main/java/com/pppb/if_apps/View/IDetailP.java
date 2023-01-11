@@ -6,5 +6,5 @@ import com.pppb.if_apps.Model.Pengumumann;
 import java.util.ArrayList;
 
 public interface IDetailP {
-    void detailPengumuman(ArrayList<DetailPengumuman> list_pengumuman);
+    void updateDetail(DetailPengumuman detailPengumuman);
 }

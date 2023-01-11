@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface IPengumuman {
 
     void getPengumumanList(ArrayList<Pengumumann> list_pengumuman);
-    void moveToDetail(Pengumumann pengumumann);
+    void moveToDetail(String id);
 }

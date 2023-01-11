@@ -12,24 +12,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 
-import com.pppb.if_apps.Adapter.DetailPengumumanAdapter;
 import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.DetailPengumuman;
 import com.pppb.if_apps.Model.Key;
-import com.pppb.if_apps.Model.Pengumumann;
 import com.pppb.if_apps.Presenter.DetailPengumumanPresenter;
-import com.pppb.if_apps.Presenter.PengumumanPresenter;
 import com.pppb.if_apps.databinding.FragmentDetailpengumumanBinding;
-import com.pppb.if_apps.Adapter.listPengumumanAdapter;
-import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
-
-import java.util.ArrayList;
 
 public class FragmentDetailPengumuman extends Fragment implements IDetailP {
 
     private FragmentManager fragmentManager;
     private FragmentDetailpengumumanBinding binding;
-    private DetailPengumumanAdapter adapter;
     private String token;
     private DetailPengumumanPresenter presenter;
 
@@ -48,7 +40,6 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
         this.binding = FragmentDetailpengumumanBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         Log.d("testokendisp", SharedPreferenceHelper.getString(getActivity(),Key.TOKEN));
-        this.adapter = new DetailPengumumanAdapter(getActivity(), this.getParentFragmentManager());
 
         this.fragmentManager.setFragmentResultListener("GET_TOKEN", this, new FragmentResultListener() {
             @Override
@@ -58,17 +49,19 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
             }
         });
 
-        this.fragmentManager.setFragmentResultListener("TOKEN", this, new FragmentResultListener() {
+        this.fragmentManager.setFragmentResultListener(Key.MOVE_TO_DETAILP, this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                presenter.getDetailPengumuman();
+                String id = result.getString("pengumuman");
+                presenter.getDetailPengumuman(id);
             }
         });
 
         this.presenter = new DetailPengumumanPresenter(this, getActivity());
-        this.presenter.getDetailPengumuman();
         return view;
     }
+
+
 
     private void getToken(String token) {
         if (token != null) {
@@ -80,10 +73,18 @@ public class FragmentDetailPengumuman extends Fragment implements IDetailP {
     }
 
 
-
     @Override
-    public void detailPengumuman(ArrayList<DetailPengumuman> list_pengumuman) {
-        adapter.update(list_pengumuman);
+    public void updateDetail(DetailPengumuman detailPengumuman) {
+        this.binding.tvJudul.setText(detailPengumuman.getTitle());
+        if (detailPengumuman.getTag_name().length > 0) {
+            String tag_name = detailPengumuman.getTag_name()[0];
+            int len = detailPengumuman.getTag_name().length;
+            for (int j = 1; j < len; j++) {
+                tag_name += ", " + detailPengumuman.getTag_name()[j];
+            }
+            binding.tvTags.setText(tag_name);
+        }
+        this.binding.tvDesc.setText(detailPengumuman.getContent());
     }
 }
 

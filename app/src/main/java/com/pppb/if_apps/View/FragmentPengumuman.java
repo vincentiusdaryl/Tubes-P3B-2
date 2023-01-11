@@ -45,7 +45,8 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         this.binding = FragmentPengumumanBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
         Log.d("testokendisp",SharedPreferenceHelper.getString(getActivity(),Key.TOKEN));
-        this.adapter = new listPengumumanAdapter(getActivity(), this.getParentFragmentManager());
+        this.presenter = new PengumumanPresenter(this, getActivity());
+        this.adapter = new listPengumumanAdapter(getActivity(), this.getParentFragmentManager(), presenter);
         this.binding.lwPengumuman.setAdapter(adapter);
         this.binding.lwPengumuman.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -68,8 +69,6 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
                 presenter.getPengumuman();
             }
         });
-
-        this.presenter = new PengumumanPresenter(this, getActivity());
         this.presenter.getPengumuman();
         return view;
     }
@@ -96,10 +95,12 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         listView.setAdapter(adapter);
     }
 
-    public void moveToDetail(Pengumumann pengumumann){
+    @Override
+    public void moveToDetail(String id){
         Bundle result = new Bundle();
-        result.putParcelable("pengumuman", Parcels.wrap(pengumumann));
-        this.fragmentManager.setFragmentResult(Key);
+        result.putString("pengumuman", id);
+        this.fragmentManager.setFragmentResult(Key.MOVE_TO_DETAILP, result);
+        this.changePage(Key.FRAGMENT_DETAIL_PENGUMUMAN);
     }
 
 }

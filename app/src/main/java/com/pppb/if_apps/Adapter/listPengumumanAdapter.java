@@ -10,9 +10,9 @@ import android.widget.BaseAdapter;
 import androidx.fragment.app.FragmentManager;
 
 import com.pppb.if_apps.Model.Pengumumann;
+import com.pppb.if_apps.Presenter.PengumumanPresenter;
 import com.pppb.if_apps.databinding.FragmentDetailpengumumanBinding;
 import com.pppb.if_apps.databinding.FragmentListpengumumanBinding;
-import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 
 import java.util.ArrayList;
 
@@ -23,12 +23,13 @@ public class listPengumumanAdapter extends BaseAdapter {
     private ArrayList<Pengumumann> listPengumuman;
     private Activity activity;
     private FragmentManager fragmentManager;
+    private PengumumanPresenter presenter;
 
-    public listPengumumanAdapter(Activity activity, FragmentManager fragmentManager) {
+    public listPengumumanAdapter(Activity activity, FragmentManager fragmentManager, PengumumanPresenter presenter) {
         this.activity = activity;
         this.fragmentManager = fragmentManager;
-        this.listPengumuman = new ArrayList<>();
-
+        this.listPengumuman = new ArrayList<Pengumumann>();
+        this.presenter = presenter;
     }
 
     public void update(ArrayList<Pengumumann> listPengumuman) {
@@ -42,7 +43,7 @@ public class listPengumumanAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
+    public Pengumumann getItem(int i) {
         return listPengumuman.get(i);
     }
 
@@ -51,13 +52,19 @@ public class listPengumumanAdapter extends BaseAdapter {
         return i;
     }
 
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Pengumumann pem = (Pengumumann) this.getItem(i);
-        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        binding = FragmentListpengumumanBinding.inflate(inflater);
-        view = binding.getRoot();
-        view.setTag(binding);
+        Pengumumann pem = this.getItem(i);
+        if(view == null){
+            LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+            binding = FragmentListpengumumanBinding.inflate(inflater);
+            view = binding.getRoot();
+            view.setTag(binding);
+        }
+        else{
+            binding = (FragmentListpengumumanBinding) view.getTag();
+        }
 
         binding.tvTitlePengumuman.setText(pem.getTitle());
         if (pem.getTag_name().length > 0) {
@@ -67,10 +74,16 @@ public class listPengumumanAdapter extends BaseAdapter {
                 tag_name += ", " + pem.getTag_name()[j];
             }
             binding.tvTags.setText(tag_name);
-            binding.getRoot().setOnClickListener();
         }
+        binding.getRoot().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.moveToDetail(String.valueOf(pem));
+            }
+        });
         return view;
     }
+
 
 }
 

@@ -123,8 +123,8 @@ public class PengumumanPresenter {
         this.ui.getPengumumanList(list_pengumuman);
     }
 
-    private void moveToDetail(Pengumumann pengumumann){
-
+    public void moveToDetail(String id){
+        this.ui.moveToDetail(id);
     }
 }
 

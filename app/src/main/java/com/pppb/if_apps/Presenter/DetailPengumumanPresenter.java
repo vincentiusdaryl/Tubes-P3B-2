@@ -13,8 +13,6 @@ import com.google.gson.Gson;
 import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.DetailPengumuman;
 import com.pppb.if_apps.Model.Key;
-import com.pppb.if_apps.Model.Pengumumann;
-import com.pppb.if_apps.Model.ResDetailP;
 import com.pppb.if_apps.View.IDetailP;
 import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 
@@ -35,21 +33,20 @@ public class DetailPengumumanPresenter {
     private ArrayList<DetailPengumuman> list_pengumuman;
 
     public DetailPengumumanPresenter(IDetailP ui, Context context) {
-        this.ui = (IDetailP) ui;
+        this.ui = ui;
         this.context = context;
         this.binding = binding;
         this.gson = new Gson();
     }
 
-    public void getDetailPengumuman() {
+    public void getDetailPengumuman(String id) {
         String token = SharedPreferenceHelper.getString(context.getApplicationContext(), Key.TOKEN);
-        String idP = "";
         Log.d("tokenHasilSave", SharedPreferenceHelper.getString(context.getApplicationContext(), Key.TOKEN));
-        this.callVolley(token, idP);
+        this.callVolley(id);
     }
 
-    public void callVolley(String token, String idP) {
-        String url = Key.BASE_URL + "announcements/" + idP;
+    public void callVolley(String id) {
+        String url = Key.BASE_URL + "announcements/" + id;
         RequestQueue queue = Volley.newRequestQueue(this.context);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
@@ -118,7 +115,7 @@ public class DetailPengumumanPresenter {
                 author_name, tag_name, tag_id);
         list_pengumuman.add(detailPengumuman);
 
-        this.ui.detailPengumuman(list_pengumuman);
+        this.ui.updateDetail(detailPengumuman);
     }
 }
 
