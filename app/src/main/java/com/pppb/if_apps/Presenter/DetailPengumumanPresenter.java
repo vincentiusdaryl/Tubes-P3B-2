@@ -65,8 +65,8 @@ public class DetailPengumumanPresenter {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        String body;
-                        String errRes;
+                        String body = "";
+                        String errRes = "";
                         if (error.networkResponse.data != null) {
                             try {
                                 body = new String(error.networkResponse.data);

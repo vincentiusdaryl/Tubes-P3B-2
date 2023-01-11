@@ -78,7 +78,7 @@ public class listPengumumanAdapter extends BaseAdapter {
         binding.getRoot().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.moveToDetail(String.valueOf(pem));
+                presenter.moveToDetail(pem.getId());
             }
         });
         return view;

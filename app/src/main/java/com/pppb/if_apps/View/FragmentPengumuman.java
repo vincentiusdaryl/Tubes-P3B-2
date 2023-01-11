@@ -101,6 +101,7 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         result.putString("pengumuman", id);
         this.fragmentManager.setFragmentResult(Key.MOVE_TO_DETAILP, result);
         this.changePage(Key.FRAGMENT_DETAIL_PENGUMUMAN);
+        Log.d("tes id p", id);
     }
 
 }
