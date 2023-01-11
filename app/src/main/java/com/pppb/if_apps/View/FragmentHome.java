@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -64,4 +65,5 @@ public class FragmentHome extends Fragment implements View.OnClickListener, IHom
         result.putInt(Key.CHANGE_PAGE_NUMBER, page);
         this.fragmentManager.setFragmentResult(Key.CHANGE_PAGE, result);
     }
+
 }
