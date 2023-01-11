@@ -13,8 +13,9 @@
         android:src="@drawable/informatika_logo"/>
 
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_marginTop="75dp">
@@ -31,7 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="75dp"
-                android:text="Email"/>
+                android:text="Email"
+
+                />
 
             <EditText
                 android:id="@+id/et_email"
@@ -71,7 +74,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="25dp">
@@ -81,6 +84,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_dosen"
                 android:text="Dosen"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/coolveticacondensedrg"
                 />
 
             <Button
@@ -91,6 +96,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/button_dosen"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/coolveticacondensedrg"
+
                 />
 
             <Button
@@ -99,15 +107,20 @@
                 android:layout_height="wrap_content"
                 android:text="Admin"
                 android:background="@drawable/button_dosen"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/coolveticacondensedrg"
                 />
+
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_statusLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text=""/>
+            <TextView
+                android:id="@+id/tv_statusLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""/>
+
 
     </LinearLayout>
 </LinearLayout>

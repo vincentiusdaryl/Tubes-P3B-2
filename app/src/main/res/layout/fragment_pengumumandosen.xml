@@ -18,8 +18,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="70dp"
             android:text="Pengumuman"
-            android:textStyle="bold"
-            >
+            android:textSize="20dp"
+            android:textStyle="bold">
 
         </TextView>
 
@@ -28,8 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="20dp"
-            android:hint="Input files here"
-            >
+            android:hint="Input files here">
 
         </EditText>
 
@@ -44,41 +43,27 @@
 
         </ListView>
 
-        <Button
+        <!--        <Button-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:id="@+id/button_add"-->
+        <!--            android:background="@drawable/button_dosen"-->
+        <!--            >-->
+
+        <!--        </Button>-->
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_add"
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="18dp"
+            android:id="@+id/button_add_pengumumandosen"
+            android:src="@android:drawable/ic_input_add"
+
             >
 
-        </Button>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right|bottom"
-            android:orientation="vertical">
-
-
-
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/button_add"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginRight="20dp"-->
-<!--                android:layout_marginBottom="20dp"-->
-<!--                android:clickable="true"-->
-<!--                android:src="@drawable/ic_baseline_add_24"-->
-
-<!--                android:contentDescription="TODO">-->
-
-<!--            </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
-
-        </LinearLayout>
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </LinearLayout>
-
-
-
-
-
 </LinearLayout>

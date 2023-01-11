@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Model.Login;
 import com.pppb.if_apps.Model.ResLogin;
@@ -90,6 +91,7 @@ public class LoginPresenter {
             SharedPreferenceHelper.setString(context.getApplicationContext(),Key.TOKEN,Key.TOKEN);
             this.ui.showLoginStatus("Login Berhasil", true);
         }
+
 
         Log.d("token", Key.TOKEN);
 

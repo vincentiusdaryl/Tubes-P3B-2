@@ -29,9 +29,9 @@ public class fragment_pengumumandosen extends Fragment {
         binding = FragmentPengumumandosenBinding.inflate(inflater);
 
 //        floatingActionButton = binding.buttonAdd;
-        buttonAdd = binding.buttonAdd;
+        floatingActionButton = binding.buttonAddPengumumandosen;
 //        floatingActionButton.setVisibility(View.GONE);
-        binding.buttonAdd.setOnClickListener(this::onClick);
+        binding.buttonAddPengumumandosen.setOnClickListener(this::onClick);
         return binding.getRoot();
     }
 

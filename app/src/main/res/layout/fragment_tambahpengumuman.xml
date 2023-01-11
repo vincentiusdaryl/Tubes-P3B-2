@@ -17,6 +17,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="70dp"
             android:text="Tambah Pengumuman"
+            android:textSize="20dp"
             android:textStyle="bold"
             >
 
@@ -28,6 +29,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="Judul"
+            android:textStyle="bold"
 
             >
 
@@ -49,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:text="Tags"
+            android:textStyle="bold"
 
             >
 
@@ -69,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:text="Deskripsi"
+            android:textStyle="bold"
 
             >
 
@@ -104,6 +108,10 @@
             android:layout_height="wrap_content"
             android:text="SIMPAN"
             android:id="@+id/button_simpan"
+            android:background="@drawable/button_dosen"
+            android:textSize="30dp"
+            android:fontFamily="@font/coolveticacondensedrg"
+
             >
 
         </Button>

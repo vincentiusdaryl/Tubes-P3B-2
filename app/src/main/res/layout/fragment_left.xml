@@ -20,9 +20,12 @@
                 android:id="@+id/buttonHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="@string/leftHome"
                 android:textColor="@color/black"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:textStyle="bold"
+
+
                 >
             </Button>
 
@@ -30,8 +33,9 @@
                 android:id="@+id/buttonPengumuman"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pengumuman"
+                android:text="@string/leftPengumuman"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 >
             </Button>
@@ -40,8 +44,9 @@
                 android:id="@+id/buttonPertemuan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pertemuan"
+                android:text="@string/leftPertemuan"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 >
             </Button>
@@ -51,8 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:text="FRS"
+                android:text="@string/leftFrs"
                 >
             </Button>
 
@@ -61,8 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:text="KELUAR"
+                android:text="@string/leftKeluar"
                 >
             </Button>
         </LinearLayout>

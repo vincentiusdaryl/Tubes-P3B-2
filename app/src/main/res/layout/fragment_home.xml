@@ -7,7 +7,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+        >
 
         <ImageView
             android:layout_width="match_parent"
@@ -17,31 +19,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome to"
-            android:textSize="20sp"
+            android:text="@string/welcome_to"
+            android:textSize="@dimen/ukuranFontJudul"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/lemon"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IF APPS"
-            android:textSize="50sp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="30dp"/>
+            android:text="@string/if_apps"
+            android:textSize="@dimen/ukuranFontJudulBesar"
+            android:layout_marginTop="65dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/lemon"
+            />
 
     </RelativeLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            >
 
             <ImageView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/background_button_home"
@@ -51,27 +62,32 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/announcement_logo"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="25dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pengumuman"
+                android:text="@string/pengumuman"
                 android:layout_marginTop="150dp"
-                android:layout_marginLeft="35dp"
-                android:textSize="20sp"/>
+                android:layout_marginLeft="18dp"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/lemon"
+
+                />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            >
 
             <ImageView
+                android:id="@+id/iv_pertemuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/background_button_home"
-                android:id="@+id/iv_pertemuan"/>
+                android:src="@drawable/background_button_home" />
 
             <ImageView
                 android:layout_width="150dp"
@@ -82,21 +98,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pertemuan"
+                android:text="@string/pertemuan"
                 android:layout_marginTop="150dp"
-                android:layout_marginLeft="45dp"
-                android:textSize="20sp"/>
+                android:layout_marginLeft="30dp"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/lemon"
+                />
 
         </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+
+        >
 
         <RelativeLayout
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -104,27 +126,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/background_button_home"
-                android:id="@+id/iv_frs"/>
+                android:id="@+id/iv_frs"
+
+                />
 
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/notes_logo" />
+                android:layout_marginLeft="22dp"
+                android:src="@drawable/notes_logo"
+                android:fontFamily="@font/lemon"
+
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FRS"
+                android:text="@string/frs"
                 android:layout_marginTop="150dp"
                 android:layout_marginLeft="80dp"
-                android:textSize="20sp"/>
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/lemon"
+                />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -136,15 +167,17 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/logout_logo"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="22dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:layout_marginTop="150dp"
-                android:layout_marginLeft="65dp"
-                android:textSize="20sp"/>
+                android:layout_marginLeft="50dp"
+                android:textSize="@dimen/ukuranFontJudul"
+                android:fontFamily="@font/lemon"
+                />
 
         </RelativeLayout>
 

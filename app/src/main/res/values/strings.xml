@@ -3,4 +3,18 @@
     <string name="aplikasi_if">Aplikasi IF</string>
     <string name="open">open</string>
     <string name="close">close</string>
+<!--Halaman Home-->
+    <string name="welcome_to">Welcome to</string>
+    <string name="if_apps">IF APPS</string>
+    <string name="pengumuman">Pengumuman</string>
+    <string name="pertemuan">Pertemuan</string>
+    <string name="frs">FRS</string>
+    <string name="logout">Logout</string>
+<!--Left Bar-->
+    <string name="leftHome">Home</string>
+    <string name="leftPengumuman">Pengumuman</string>
+    <string name="leftPertemuan">Pertemuan</string>
+    <string name="leftKeluar">KELUAR</string>
+    <string name="leftFrs">FRS</string>
+<!--     -->
 </resources>
