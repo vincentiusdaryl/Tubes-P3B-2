@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment[] fragments;
     private int currentFragment;
     private DrawerLayout drawer;
+    private int[] backPointer={Key.PAGE_EXIT, Key.PAGE_EXIT, Key.FRAGMENT_HOME, Key.FRAGMENT_PENGUMUMAN, Key.FRAGMENT_HOME, Key.FRAGMENT_HOME};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             this.fragmentTransaction.commit();
             this.currentFragment = page;
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        changePage(backPointer[currentFragment]);
     }
 
     private void exitApplication () {
