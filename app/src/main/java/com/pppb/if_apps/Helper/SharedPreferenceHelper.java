@@ -1,50 +1,45 @@
 package com.pppb.if_apps.Helper;
 
-import com.pppb.if_apps.Model.Key;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedPreferenceHelper {
 
-    private static final String PREFERENCE_FILE_KEY = "PREFERENCE_FILE_KEY";
+    private static final String PREFS_NAME = "shared_prefs";
 
-    private SharedPreferences mSharedPreferences;
-    private Context mContext;
-    private SharedPreferences.Editor editor ;
-
-    public SharedPreferenceHelper(Context context) {
-        mContext = context;
-        mSharedPreferences = mContext.getSharedPreferences(PREFERENCE_FILE_KEY, Context.MODE_PRIVATE);
-        editor = mSharedPreferences.edit();
+    public static void setString(Context context, String key, String value) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.apply();
     }
 
-        public void saveString(String key, String value) {
-            mSharedPreferences.edit().putString(key, value).apply();
-        }
+    public static String getString(Context context, String key) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return preferences.getString(key, "");
+    }
 
-        public String getString(String key) {
-            return mSharedPreferences.getString(key, null);
-        }
+    public static void setInt(Context context, String key, int value) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(key, value);
+        editor.apply();
+    }
 
-        public void saveInt(String key, int value) {
-            mSharedPreferences.edit().putInt(key, value).apply();
-        }
+    public static int getInt(Context context, String key) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return preferences.getInt(key, 0);
+    }
 
-        public int getInt(String key) {
-            return mSharedPreferences.getInt(key, 0);
-        }
+    public static void setBoolean(Context context, String key, boolean value) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
 
-        public void saveBoolean(String key, boolean value) {
-            mSharedPreferences.edit().putBoolean(key, value).apply();
-        }
-
-        public boolean getBoolean(String key) {
-            return mSharedPreferences.getBoolean(key, false);
-        }
-
-        public void clear(){
-            editor.clear()
-            .apply();
-        }
-
+    public static boolean getBoolean(Context context, String key) {
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        return preferences.getBoolean(key, false);
+    }
 }

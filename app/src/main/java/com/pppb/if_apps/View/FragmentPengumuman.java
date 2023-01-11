@@ -28,7 +28,6 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     private listPengumumanAdapter adapter;
     private String token;
     private PengumumanPresenter presenter;
-    private SharedPreferenceHelper spHelper;
 
     public FragmentPengumuman() {
     }
@@ -42,15 +41,15 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         this.fragmentManager = getParentFragmentManager();
         this.binding = FragmentPengumumanBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-
+        Log.d("testokendisp",SharedPreferenceHelper.getString(getActivity(),"token"));
         this.adapter = new listPengumumanAdapter(getActivity(), this.getParentFragmentManager());
         this.binding.lwPengumuman.setAdapter(adapter);
 
         this.fragmentManager.setFragmentResultListener("GET_TOKEN", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                String token = Key.TOKEN;
-                getToken(token);
+                String token = SharedPreferenceHelper.getString(getActivity(),"token");
+                getToken();
             }
         });
 
@@ -66,9 +65,9 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         return view;
     }
 
-    private void getToken(String token) {
-        if (token != null) {
-            this.token = Key.TOKEN;
+    private void getToken() {
+        if (SharedPreferenceHelper.getString(getActivity(),"token") != null) {
+            this.token = SharedPreferenceHelper.getString(getActivity(),"token");
             Log.d("token pengumuman", this.token);
         } else {
             Log.e("NO TOKEN", "");
@@ -85,7 +84,7 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     @Override
     public void onStart() {
         super.onStart();
-        presenter.clickPengumuman();
+//        presenter.clickPengumuman();
     }
 }
 

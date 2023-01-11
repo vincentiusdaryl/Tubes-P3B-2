@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,14 +17,16 @@ import com.pppb.if_apps.Presenter.LoginPresenter;
 import com.pppb.if_apps.R;
 import com.pppb.if_apps.databinding.FragmentLoginBinding;
 
+import java.util.Objects;
+
 public class FragmentLogin extends Fragment implements View.OnClickListener, ILogin {
     private FragmentLoginBinding binding;
     private LoginPresenter presenter;
     private FragmentManager fragmentManager;
     private String token = "";
+    private SharedPreferenceHelper spHelper;
 
     public FragmentLogin() {
-
     }
 
     public static FragmentLogin newInstance() {
@@ -34,13 +37,11 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.fragmentManager = getParentFragmentManager();
         this.binding = FragmentLoginBinding.inflate(inflater, container, false);
-
         this.presenter = new LoginPresenter(this, getActivity(), binding);
         this.binding.btnAdmin.setOnClickListener(this::onClick);
         this.binding.btnMhs.setOnClickListener(this::onClick);
         this.binding.btnDosen.setOnClickListener(this::onClick);
         return this.binding.getRoot();
-
     }
 
     @Override
@@ -48,12 +49,28 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
         if(view == this.binding.btnAdmin){
             this.reqLogin(Key.ROLE_ADMIN);
             Log.d("sukses", "sukses");
+            this.token = Key.TOKEN;
+            SharedPreferenceHelper.setString(getActivity(),"token",this.token);
+            SharedPreferenceHelper.setBoolean(getActivity(),Key.PREF_IS_LOGIN,true);
+            SharedPreferenceHelper.setString(getActivity(),Key.PREF_ROLE,"admin");
+            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getActivity(),"token"));
+
         }
         else if(view == this.binding.btnMhs){
             this.reqLogin(Key.ROLE_MHS);
+            Log.d("sukses", "sukses");
+            SharedPreferenceHelper.setString(getActivity(),"token",Key.TOKEN);
+            SharedPreferenceHelper.setBoolean(getActivity(),Key.PREF_IS_LOGIN,true);
+            SharedPreferenceHelper.setString(getActivity(),Key.PREF_ROLE,"mahasiswa");
+            Log.d("suksesSaveToken", "Berhasil save token");
         }
         else if(view == this.binding.btnDosen){
             this.reqLogin(Key.ROLE_DOSEN);
+            Log.d("sukses", "sukses");
+            SharedPreferenceHelper.setString(getActivity(),"token",Key.TOKEN);
+            SharedPreferenceHelper.setBoolean(getActivity(),Key.PREF_IS_LOGIN,true);
+            SharedPreferenceHelper.setString(getActivity(),Key.PREF_ROLE,"dosen");
+            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getActivity(),"token"));
         }
     }
 

@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.GetPengumuman;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Model.Pengumumann;
@@ -44,17 +45,18 @@ public class PengumumanPresenter {
     }
 
     public void getPengumuman() {
-        String token = Key.TOKEN;
+        String token = SharedPreferenceHelper.getString(context.getApplicationContext(), "token");
+        Log.d("tokenHasilSave",token);
         this.callVolley(token);
     }
 
-    public void clickPengumuman(){
-        lv.setOnItemClickListener(this::onClickItem);
-    }
-
-    private void onClickItem(AdapterView<?> adapterView, View view, int i, long l) {
-        getDetails(list_pengumuman.get(i).getId());
-    }
+//    public void clickPengumuman(){
+//        lv.setOnItemClickListener(this::onClickItem);
+//    }
+//
+//    private void onClickItem(AdapterView<?> adapterView, View view, int i, long l) {
+//        getDetails(list_pengumuman.get(i).getId());
+//    }
 
     public void getDetails(String id) {
         String url = Key.BASE_URL + "announcements/" + id;
