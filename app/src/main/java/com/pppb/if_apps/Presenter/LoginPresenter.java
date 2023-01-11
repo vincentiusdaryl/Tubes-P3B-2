@@ -92,6 +92,8 @@ public class LoginPresenter {
         }
 
         Log.d("token", Key.TOKEN);
+        SharedPreferenceHelper.setString(context.getApplicationContext(),Key.TOKEN,Key.TOKEN);
+        Log.d("CekTokenDiLP",SharedPreferenceHelper.getString(context.getApplicationContext(),Key.TOKEN));
     }
 
 }

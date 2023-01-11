@@ -1,6 +1,8 @@
 package com.pppb.if_apps.View;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.pppb.if_apps.Helper.SharedPreferenceHelper;
 import com.pppb.if_apps.Model.Key;
 import com.pppb.if_apps.Presenter.HomePresenter;
 import com.pppb.if_apps.databinding.FragmentHomeBinding;
@@ -50,7 +53,9 @@ public class FragmentHome extends Fragment implements View.OnClickListener, IHom
             this.changePage(Key.FRAGMENT_FRS);
         }
         else if(view == this.binding.ivLogout){
-            this.changePage(Key.PAGE_EXIT);
+            this.changePage(Key.FRAGMENT_LOGIN);
+            SharedPreferenceHelper.clearAll(getActivity());
+            Log.d("CekLogoutToken",SharedPreferenceHelper.getString(getActivity(),Key.TOKEN));
         }
     }
 

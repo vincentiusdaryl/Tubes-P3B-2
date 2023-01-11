@@ -42,4 +42,11 @@ public class SharedPreferenceHelper {
         SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         return preferences.getBoolean(key, false);
     }
+
+    public static void clearAll(Context context){
+        SharedPreferences preferences = context.getSharedPreferences(PREFS_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear()
+                .apply();
+    }
 }

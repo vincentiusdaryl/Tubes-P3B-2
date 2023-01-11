@@ -25,6 +25,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
     private FragmentManager fragmentManager;
     private String token = "";
     private SharedPreferenceHelper spHelper;
+    private Context context;
 
     public FragmentLogin() {
     }
@@ -50,10 +51,11 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
             this.reqLogin(Key.ROLE_ADMIN);
             Log.d("sukses", "sukses");
             this.token = Key.TOKEN;
-            SharedPreferenceHelper.setString(getActivity(),"token",this.token);
+            Log.d("cekToken",this.token);
             SharedPreferenceHelper.setBoolean(getActivity(),Key.PREF_IS_LOGIN,true);
             SharedPreferenceHelper.setString(getActivity(),Key.PREF_ROLE,"admin");
-            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getActivity(),"token"));
+            Log.d("cekRole",SharedPreferenceHelper.getString(getActivity(),Key.PREF_ROLE));
+            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getContext(),Key.TOKEN));
 
         }
         else if(view == this.binding.btnMhs){
@@ -70,7 +72,7 @@ public class FragmentLogin extends Fragment implements View.OnClickListener, ILo
             SharedPreferenceHelper.setString(getActivity(),"token",Key.TOKEN);
             SharedPreferenceHelper.setBoolean(getActivity(),Key.PREF_IS_LOGIN,true);
             SharedPreferenceHelper.setString(getActivity(),Key.PREF_ROLE,"dosen");
-            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getActivity(),"token"));
+            Log.d("suksesSaveToken",SharedPreferenceHelper.getString(getContext(),"token"));
         }
     }
 

@@ -41,14 +41,14 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
         this.fragmentManager = getParentFragmentManager();
         this.binding = FragmentPengumumanBinding.inflate(inflater, container, false);
         View view = this.binding.getRoot();
-        Log.d("testokendisp",SharedPreferenceHelper.getString(getActivity(),"token"));
+        Log.d("testokendisp",SharedPreferenceHelper.getString(getActivity(),Key.TOKEN));
         this.adapter = new listPengumumanAdapter(getActivity(), this.getParentFragmentManager());
         this.binding.lwPengumuman.setAdapter(adapter);
 
         this.fragmentManager.setFragmentResultListener("GET_TOKEN", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                String token = SharedPreferenceHelper.getString(getActivity(),"token");
+                String token = Key.TOKEN;
                 getToken();
             }
         });
@@ -66,8 +66,8 @@ public class FragmentPengumuman extends Fragment implements IPengumuman {
     }
 
     private void getToken() {
-        if (SharedPreferenceHelper.getString(getActivity(),"token") != null) {
-            this.token = SharedPreferenceHelper.getString(getActivity(),"token");
+        if (token != null) {
+            this.token = Key.TOKEN;
             Log.d("token pengumuman", this.token);
         } else {
             Log.e("NO TOKEN", "");
