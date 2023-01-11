@@ -57,7 +57,7 @@ public class listFRSMatkulAdapter extends BaseAdapter {
 
         }
         void add(matkul matkul){
-            binding.tvTitleMatkul.setText(matkul.getmatkul());
+            binding.tvNamaMatkulPrasyarat2.setText(matkul.getmatkul());
         }
     }
 }

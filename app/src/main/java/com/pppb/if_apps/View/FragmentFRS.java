@@ -22,7 +22,6 @@ import com.pppb.if_apps.Presenter.PengumumanPresenter;
 import com.pppb.if_apps.databinding.FragmentFrsBinding;
 import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 import com.pppb.if_apps.listFRSSemesterAdapter;
-import com.pppb.if_apps.listPengumumanAdapter;
 
 import java.util.ArrayList;
 
