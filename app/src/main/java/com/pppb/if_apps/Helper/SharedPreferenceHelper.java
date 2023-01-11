@@ -19,7 +19,7 @@ public class SharedPreferenceHelper {
     }
 
         public void saveString(String key, String value) {
-            mSharedPreferences.edit().putString(key, value).apply();
+            editor.putString(key, value).apply();
         }
 
         public String getString(String key) {

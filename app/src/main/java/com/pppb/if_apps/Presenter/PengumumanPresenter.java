@@ -3,6 +3,7 @@ package com.pppb.if_apps.Presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -12,11 +13,15 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.pppb.if_apps.Model.GetPengumuman;
 import com.pppb.if_apps.Model.Key;
+import com.pppb.if_apps.Model.Pengumumann;
 import com.pppb.if_apps.View.IPengumuman;
 import com.pppb.if_apps.databinding.FragmentPengumumanBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PengumumanPresenter {
     private IPengumuman ui;
@@ -24,6 +29,7 @@ public class PengumumanPresenter {
     private Gson gson;
     private FragmentPengumumanBinding binding;
     private String token;
+    private Pengumumann pengumumann;
 
     public PengumumanPresenter(IPengumuman ui, Context context){
         this.ui = (IPengumuman) ui;
@@ -32,7 +38,7 @@ public class PengumumanPresenter {
         this.gson = new Gson();
     }
     public void getPengumuman(){
-            String token = Key.TOKEN;
+            token = Key.TOKEN;
             this.callVolley(token);
     }
 
@@ -65,20 +71,21 @@ public class PengumumanPresenter {
                             }
                         }
                     }
+
                 }){
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                HashMap headers = new HashMap<>();
-//                headers.put("Content-Type", "application/json");
-//                headers.put("token", Key.TOKEN);
-//                return headers;
-//            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer"+token);
+                return map;
+            }
         };
         queue.add(jsonObjectRequest);
     }
     private void processResult(String jsonObject) {
         GetPengumuman res = gson.fromJson(jsonObject, GetPengumuman.class);
         this.ui.getPengumumanList(res);
+        Log.d("berhasil", "processResult: ");
     }
     }
 
